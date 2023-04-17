@@ -1,5 +1,5 @@
 <template>
-  <div class="create-note">
+  <router-link to="create" class="create-note">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15,12 +15,14 @@
       />
     </svg>
     <span class="create-note-text">Create Note</span>
-  </div>
+  </router-link>
 </template>
 <style scoped>
 .create-note {
   height: 9rem;
   margin: 1rem;
+  text-decoration: none;
+  color: #333;
   width: 97%;
   height: 13%;
   background-color: #ffd080;
@@ -28,6 +30,9 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+.create-note:hover {
+  scale: 1.02;
 }
 .icon-create {
   margin-left: 2rem;

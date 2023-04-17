@@ -1,23 +1,26 @@
 import { createRouter, createWebHistory } from "vue-router";
 import UserAuth from "./pages/UserAuth.vue";
 import SectionMain from "./pages/SectionMain.vue";
-import NoteView from "./pages/NoteView.vue";
-import NoteForm from "./pages/NoteForm.vue";
+import NoteView from "./components/notes/NoteView.vue";
+import NoteForm from "./components/notes/NoteForm.vue";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/", component: UserAuth },
+    { path: "/", redirect: "/auth" },
+    { path: "/auth", component: UserAuth },
     {
-      path: "/notes/:id",
+      path: "/main",
       component: SectionMain,
       children: [
-        {
-          path: "view",
-          component: NoteView,
-        },
         { path: "create", component: NoteForm },
+        {
+          path: ":id",
+          component: NoteView,
+          props: true,
+        },
       ],
     },
+    { path: "/:notFound(.*)", redirect: "/auth" },
   ],
 });
 export default router;

@@ -3,7 +3,7 @@
     <span class="logo">Colornote</span>
     <nav class="actions">
       <ul>
-        <button class="logout">Logout</button>
+        <base-button radius="curved">Logout</base-button>
       </ul>
     </nav>
   </header>
@@ -31,17 +31,7 @@
   display: flex;
   gap: 2rem;
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: 700;
   height: 100%;
-}
-.logout {
-  cursor: pointer;
-  padding: 1rem 2rem;
-  border: none;
-  background-color: #fdba45;
-  border-radius: 10px;
-}
-.logout:hover {
-  padding: 1.2rem 2.2rem;
 }
 </style>

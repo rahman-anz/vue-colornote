@@ -1,23 +1,34 @@
 <template>
-  <div class="section">
+  <section>
     <create-note></create-note>
-    <ul class="notes">
-      <note-item></note-item>
+    <ul class="notes" v-if="store.hasNotes">
+      <note-item
+        v-for="note in notes"
+        :key="note.id"
+        :id="note.id"
+        :title="note.title"
+        :description="note.description"
+      ></note-item>
     </ul>
-  </div>
+  </section>
   <router-view></router-view>
 </template>
 <script>
 import CreateNote from "../components/notes/CreateNote.vue";
 import NoteItem from "../components/notes/NoteItem.vue";
+import { useNoteStore } from "../store/store.js";
 export default {
   components: { CreateNote, NoteItem },
-  setup() {},
+  setup() {
+    const store = useNoteStore();
+    const notes = store.notes;
+    return { store, notes };
+  },
 };
 </script>
 
 <style scoped>
-.section {
+section {
   background-color: #ffedcc;
   display: flex;
   flex-direction: column;
