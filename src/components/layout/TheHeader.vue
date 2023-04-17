@@ -10,6 +10,7 @@
 </template>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Monoton&display=swap");
 .main-header {
   padding: 1rem 3rem;
   background-color: #ccab71;
@@ -20,7 +21,7 @@
 .logo {
   font-family: "Lobster";
   font-size: 3.2rem;
-  letter-spacing: 1.4px;
+  letter-spacing: 3px;
 }
 .actions {
   margin-left: auto;

@@ -2,12 +2,14 @@
   <div class="backdrop">
     <div class="main-box">
       <the-header></the-header>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import TheHeader from "./components/TheHeader.vue";
+import TheHeader from "./components/layout/TheHeader.vue";
+// import NoteSection from "./components/NoteSection.vue";
 export default {
   components: { TheHeader },
 };
@@ -24,7 +26,7 @@ html {
 }
 .backdrop {
   background-color: black;
-  padding: 1.7rem 2rem;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,6 +40,6 @@ html {
   grid-template-rows: 10vh 1fr;
   grid-template-columns: 30vw 1fr;
   overflow: hidden;
-  background-color: aquamarine;
+  background-color: #ffedcc;
 }
 </style>
