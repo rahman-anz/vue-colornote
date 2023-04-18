@@ -16,6 +16,8 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lobster&display=swap");
+
 html {
   font-size: 10px;
 }
@@ -23,6 +25,9 @@ html {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+body {
+  font-family: "Inter", sans-serif;
 }
 .backdrop {
   background-color: black;

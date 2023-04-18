@@ -51,12 +51,12 @@ section {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 1.2rem;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #c4a46e;
+  background: #e1bf84;
 }
 
 /* Handle */

@@ -6,7 +6,7 @@ import NoteForm from "./components/notes/NoteForm.vue";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/", redirect: "/auth" },
+    { path: "/", redirect: "/main/c3" },
     { path: "/auth", component: UserAuth },
     {
       path: "/main",

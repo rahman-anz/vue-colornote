@@ -21,6 +21,7 @@ button {
   cursor: pointer;
 }
 button:hover {
+  opacity: 1;
   scale: 110%;
   background-color: rgb(237, 178, 77);
 }

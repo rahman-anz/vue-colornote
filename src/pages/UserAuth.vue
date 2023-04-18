@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2>Signup first bishhhh</h2>
+    <h2>Signup first</h2>
   </section>
 </template>
 <style scoped>
