@@ -20,7 +20,7 @@ const router = createRouter({
         },
       ],
     },
-    { path: "/:notFound(.*)", redirect: "/auth" },
+    { path: "/:notFound(.*)", redirect: "/main/c3" },
   ],
 });
 export default router;

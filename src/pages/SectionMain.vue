@@ -16,7 +16,7 @@
 <script>
 import CreateNote from "../components/notes/CreateNote.vue";
 import NoteItem from "../components/notes/NoteItem.vue";
-import { useNoteStore } from "../store/store.js";
+import { useNoteStore } from "../store/note.js";
 export default {
   components: { CreateNote, NoteItem },
   setup() {

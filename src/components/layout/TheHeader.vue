@@ -3,14 +3,24 @@
     <span class="logo">Colornote</span>
     <nav class="actions">
       <ul>
-        <base-button radius="curved">Logout</base-button>
+        <base-button @click="logout" radius="curved">Logout</base-button>
       </ul>
     </nav>
   </header>
 </template>
-
+<script>
+import { useRouter } from "vue-router";
+export default {
+  setup() {
+    const router = useRouter();
+    function logout() {
+      router.replace("/auth");
+    }
+    return { logout };
+  },
+};
+</script>
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Monoton&display=swap");
 .main-header {
   padding: 1rem 3rem;
   background-color: #ccab71;

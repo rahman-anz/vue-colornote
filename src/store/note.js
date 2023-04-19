@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 export const useNoteStore = defineStore("note", {
   state() {
     return {
+      user: "django",
       notes: [
         {
           id: "c1",
@@ -26,12 +27,27 @@ export const useNoteStore = defineStore("note", {
   },
   getters: {
     hasNotes(state) {
-      return state.notes && state.notes.length > 1;
+      return state.notes && state.notes.length > 0;
     },
   },
   actions: {
     noteById(id) {
       return this.notes.find((note) => note.id === id);
+    },
+    addNote(id, title, desc) {
+      const newNote = {
+        id: id,
+        title: title,
+        description: desc,
+      };
+      console.log(newNote);
+      this.notes.unshift(newNote);
+    },
+    removeNote(id) {
+      const selectedNoteIndex = this.notes.findIndex((note) => note.id === id);
+      console.log(selectedNoteIndex);
+      this.notes.splice(selectedNoteIndex, 1);
+      console.log(this.notes);
     },
   },
 });

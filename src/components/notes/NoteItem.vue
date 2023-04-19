@@ -7,7 +7,7 @@
       </p>
 
       <base-button radius="circle" class="icon-position">
-        <ion-icon name="bookmark" size="small" class=""></ion-icon>
+        <ion-icon name="bookmark" size="small" ></ion-icon>
       </base-button>
     </router-link>
   </li>

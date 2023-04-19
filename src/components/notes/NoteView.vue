@@ -1,27 +1,36 @@
 <template>
-  <section>
-    <h2>{{ note.title }}</h2>
+  <section v-if="selectedNote">
+    <h2>{{ selectedNote.title }}</h2>
     <p>
-      {{ note.description }}
+      {{ selectedNote.description }}
     </p>
-    <base-button radius="circle" class="icon-position">
+    <base-button @click="deleteNote" radius="circle" class="icon-position">
       <ion-icon size="large" name="trash-outline"></ion-icon>
     </base-button>
   </section>
 </template>
 
 <script>
-import { useNoteStore } from "@/store/store";
+import { useNoteStore } from "@/store/note";
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 export default {
   props: ["id"],
   setup(props) {
     const store = useNoteStore();
-    const note = computed(function () {
-      if (props.id) return store.noteById(props.id);
-      else return "";
+    const router = useRouter();
+    const selectedNote = computed(function () {
+      if (props.id) {
+        return store.noteById(props.id);
+      } else {
+        return false;
+      }
     });
-    return { note };
+    function deleteNote() {
+      store.removeNote(props.id);
+      router.replace("create");
+    }
+    return { selectedNote, deleteNote };
   },
 };
 </script>
@@ -53,6 +62,7 @@ section h2 {
 
 section p {
   font-size: 1.8rem;
+  width: 95%;
   margin-top: 3rem;
   line-height: 3.2rem;
 }

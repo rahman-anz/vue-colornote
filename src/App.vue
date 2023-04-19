@@ -17,7 +17,8 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lobster&display=swap");
-
+@import url("https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js");
+@import url("https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js");
 html {
   font-size: 10px;
 }
