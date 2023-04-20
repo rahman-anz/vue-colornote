@@ -6,13 +6,19 @@
         {{ description.slice(0, 90) }}
       </p>
 
-      <base-button @click="togglePin" mode="circle" class="icon-position">
+      <base-button
+        @click="togglePin"
+        :isPinned="getPinStatus"
+        mode="circle"
+        class="icon-position"
+      >
         <BookmarkIcon class="icon-pin" />
       </base-button>
     </router-link>
   </li>
 </template>
 <script>
+import { computed } from "vue";
 import { BookmarkIcon } from "@heroicons/vue/24/solid";
 import { useNoteStore } from "@/store/note";
 export default {
@@ -23,7 +29,10 @@ export default {
     function togglePin() {
       store.togglePin(props.id);
     }
-    return { togglePin };
+    const getPinStatus = computed(function () {
+      return store.getPinStatus(props.id);
+    });
+    return { togglePin, getPinStatus };
   },
 };
 </script>

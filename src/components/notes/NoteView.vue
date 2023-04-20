@@ -52,7 +52,6 @@ section h2 {
   text-align: center;
   margin-top: 2rem;
   font-size: 3rem;
-
   font-weight: 600;
 }
 

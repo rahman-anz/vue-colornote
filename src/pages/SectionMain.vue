@@ -3,7 +3,7 @@
     <create-note></create-note>
     <ul class="notes" v-if="store.hasNotes">
       <note-item
-        v-for="note in notes"
+        v-for="note in sortedNotes"
         :key="note.id"
         :id="note.id"
         :title="note.title"
@@ -14,6 +14,7 @@
   <router-view></router-view>
 </template>
 <script>
+import { computed } from "vue";
 import CreateNote from "../components/notes/CreateNote.vue";
 import NoteItem from "../components/notes/NoteItem.vue";
 import { useNoteStore } from "../store/note.js";
@@ -21,8 +22,20 @@ export default {
   components: { CreateNote, NoteItem },
   setup() {
     const store = useNoteStore();
-    const notes = store.notes;
-    return { store, notes };
+    const notes = store.getNotes;
+    const sortedNotes = computed(function () {
+      return notes.slice().sort((a, b) => {
+        if (a.isPinned === true && b.isPinned === false) {
+          return -1;
+        } else if (a.isPinned === false && b.isPinned === true) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+    });
+    console.log(sortedNotes);
+    return { store, sortedNotes };
   },
 };
 </script>

@@ -11,7 +11,9 @@
         <input type="password" class="password" />
       </div>
       <div class="actions">
-        <base-button mode="curved">{{ btnLoginText }}</base-button>
+        <base-button @click="login" mode="curved">{{
+          btnLoginText
+        }}</base-button>
         <base-button @click="toggleMode" mode="flat">{{
           btnSignupText
         }}</base-button>
@@ -27,6 +29,7 @@
   </section>
 </template>
 <script>
+import { useRouter } from "vue-router";
 import { computed, ref } from "vue";
 export default {
   setup() {
@@ -34,6 +37,10 @@ export default {
     function toggleMode() {
       if (mode.value === "login") mode.value = "signup";
       else mode.value = "login";
+    }
+    const router = useRouter();
+    function login() {
+      router.replace("main/create");
     }
     const btnLoginText = computed(function () {
       if (mode.value === "login") return "Login";
@@ -43,7 +50,7 @@ export default {
       if (mode.value === "login") return "Signup instead";
       else return "Login instead";
     });
-    return { toggleMode, btnLoginText, btnSignupText };
+    return { toggleMode, login, btnLoginText, btnSignupText };
   },
 };
 </script>
@@ -53,7 +60,9 @@ section {
   grid-column: 1/-1;
   padding: 2rem 4rem;
   display: flex;
+  gap: 2rem;
   align-items: center;
+  justify-content: center;
   background-color: #ffd58d84;
 }
 form {

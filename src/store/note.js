@@ -32,6 +32,9 @@ export const useNoteStore = defineStore("note", {
     hasNotes(state) {
       return state.notes && state.notes.length > 0;
     },
+    getNotes(state) {
+      return state.notes;
+    },
   },
   actions: {
     noteById(id) {
@@ -42,6 +45,7 @@ export const useNoteStore = defineStore("note", {
         id: id,
         title: title,
         description: desc,
+        isPinned: false,
       };
       this.notes.unshift(newNote);
     },
@@ -54,7 +58,10 @@ export const useNoteStore = defineStore("note", {
     togglePin(id) {
       const selectedNote = this.noteById(id);
       selectedNote.isPinned = !selectedNote.isPinned;
-      console.log(selectedNote);
+    },
+    getPinStatus(id) {
+      const selectedNote = this.noteById(id);
+      return selectedNote.isPinned;
     },
   },
 });

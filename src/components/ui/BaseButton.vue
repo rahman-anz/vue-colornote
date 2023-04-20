@@ -1,10 +1,13 @@
 <template>
-  <button :class="mode"><slot></slot></button>
+  <button :class="[mode, { pinned: isPinned }]">
+    <slot></slot>
+  </button>
 </template>
 <script>
 export default {
   props: {
     mode: { type: String, required: false, default: null },
+    isPinned: { type: Boolean, required: false, default: false },
   },
 };
 </script>
@@ -21,9 +24,11 @@ button {
   cursor: pointer;
 }
 button:hover {
-  opacity: 1;
   scale: 110%;
   background-color: rgb(237, 178, 77);
+}
+.pinned {
+  opacity: 1;
 }
 .circle {
   border-radius: 50%;

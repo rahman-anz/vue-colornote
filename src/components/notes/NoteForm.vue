@@ -13,7 +13,7 @@
       ></textarea>
     </div>
     <p v-if="invalidForm" class="errorMsg">Please enter some input</p>
-    <base-button radius="curved">Submit</base-button>
+    <base-button mode="curved">Submit</base-button>
   </form>
 </template>
 <script>

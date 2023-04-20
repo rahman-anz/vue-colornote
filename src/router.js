@@ -3,6 +3,7 @@ import UserAuth from "./pages/UserAuth.vue";
 import SectionMain from "./pages/SectionMain.vue";
 import NoteView from "./components/notes/NoteView.vue";
 import NoteForm from "./components/notes/NoteForm.vue";
+import WelcomeNote from "./components/notes/WelcomeNote.vue";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -13,6 +14,7 @@ const router = createRouter({
       component: SectionMain,
       children: [
         { path: "create", component: NoteForm },
+        { path: "welcome", component: WelcomeNote },
         {
           path: ":id",
           component: NoteView,
