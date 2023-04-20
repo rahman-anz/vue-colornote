@@ -1,9 +1,16 @@
 <template>
   <router-link to="create" class="create-note">
-    <ion-icon name="create-outline" class="icon-create"></ion-icon>
+    <PencilSquareIcon class="icon-pen" />
     <span class="create-note-text">Create Note</span>
   </router-link>
 </template>
+<script>
+import { PencilSquareIcon } from "@heroicons/vue/24/outline";
+export default {
+  components: { PencilSquareIcon },
+  setup() {},
+};
+</script>
 <style scoped>
 .create-note {
   height: 9rem;
@@ -21,9 +28,9 @@
 .create-note:hover {
   scale: 1.02;
 }
-.icon-create {
+.icon-pen {
   margin-left: 2rem;
-  font-size: 4rem;
+  width: 4.3rem;
 }
 .create-note-text {
   font-size: 2rem;

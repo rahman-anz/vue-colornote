@@ -3,7 +3,7 @@
     <span class="logo">Colornote</span>
     <nav class="actions">
       <ul>
-        <base-button @click="logout" radius="curved">Logout</base-button>
+        <base-button @click="logout" mode="curved">Logout</base-button>
       </ul>
     </nav>
   </header>

@@ -16,9 +16,7 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lobster&display=swap");
-@import url("https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js");
-@import url("https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lobster&family=Rubik:wght@700&display=swap");
 html {
   font-size: 10px;
 }
@@ -29,9 +27,10 @@ html {
 }
 body {
   font-family: "Inter", sans-serif;
+  color: #333;
 }
 .backdrop {
-  background-color: black;
+  background-color: rgb(62, 62, 62);
   height: 100vh;
   display: flex;
   align-items: center;
@@ -40,7 +39,7 @@ body {
 .main-box {
   margin: auto;
   border-radius: 2rem;
-  width: 95vw;
+  width: 92vw;
   height: 94vh;
   display: grid;
   grid-template-rows: 10vh 1fr;

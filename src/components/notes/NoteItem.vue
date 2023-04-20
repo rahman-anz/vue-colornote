@@ -6,16 +6,25 @@
         {{ description.slice(0, 90) }}
       </p>
 
-      <base-button radius="circle" class="icon-position">
-        <ion-icon name="bookmark" size="small" ></ion-icon>
+      <base-button @click="togglePin" mode="circle" class="icon-position">
+        <BookmarkIcon class="icon-pin" />
       </base-button>
     </router-link>
   </li>
 </template>
 <script>
+import { BookmarkIcon } from "@heroicons/vue/24/solid";
+import { useNoteStore } from "@/store/note";
 export default {
+  components: { BookmarkIcon },
   props: ["id", "title", "description"],
-  setup() {},
+  setup(props) {
+    const store = useNoteStore();
+    function togglePin() {
+      store.togglePin(props.id);
+    }
+    return { togglePin };
+  },
 };
 </script>
 <style scoped>
@@ -35,7 +44,9 @@ export default {
 .note:hover {
   scale: 1.02;
 }
-
+.note:hover .icon-position {
+  opacity: 1;
+}
 .note-title {
   font-size: 1.7rem;
   font-weight: 500;
@@ -50,5 +61,9 @@ export default {
   position: absolute;
   right: 5%;
   top: 25%;
+}
+
+.icon-pin {
+  width: 1.8rem;
 }
 </style>

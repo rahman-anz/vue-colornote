@@ -1,10 +1,10 @@
 <template>
-  <button :class="radius"><slot></slot></button>
+  <button :class="mode"><slot></slot></button>
 </template>
 <script>
 export default {
   props: {
-    radius: { type: String, required: false, default: null },
+    mode: { type: String, required: false, default: null },
   },
 };
 </script>
@@ -30,5 +30,15 @@ button:hover {
 }
 .curved {
   border-radius: 10px;
+}
+.flat {
+  border-radius: 10px;
+  border: #fdba45 2px solid;
+  background-color: #ffd183;
+}
+.flat:hover {
+  scale: none;
+  background-color: #ffd183;
+  border: #a2762a 2px solid;
 }
 </style>

@@ -4,18 +4,20 @@
     <p>
       {{ selectedNote.description }}
     </p>
-    <base-button @click="deleteNote" radius="circle" class="icon-position">
-      <ion-icon size="large" name="trash-outline"></ion-icon>
+    <base-button @click="deleteNote" mode="circle" class="icon-position">
+      <TrashIcon class="icon-trash" />
     </base-button>
   </section>
 </template>
 
 <script>
+import { TrashIcon } from "@heroicons/vue/24/outline";
 import { useNoteStore } from "@/store/note";
 import { computed } from "vue";
 import { useRouter } from "vue-router";
 export default {
   props: ["id"],
+  components: { TrashIcon },
   setup(props) {
     const store = useNoteStore();
     const router = useRouter();
@@ -58,6 +60,9 @@ section h2 {
   position: absolute;
   bottom: 10rem;
   right: 8rem;
+}
+.icon-trash {
+  width: 2.6rem;
 }
 
 section p {

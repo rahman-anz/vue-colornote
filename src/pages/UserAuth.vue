@@ -1,12 +1,101 @@
 <template>
   <section>
-    <h2>Signup first</h2>
+    <form @submit.prevent>
+      <h2>Take notes on the go and access from any device</h2>
+      <div class="form-control">
+        <label for="email">Email</label>
+        <input type="email" class="email" />
+      </div>
+      <div class="form-control">
+        <label for="password">Password</label>
+        <input type="password" class="password" />
+      </div>
+      <div class="actions">
+        <base-button mode="curved">{{ btnLoginText }}</base-button>
+        <base-button @click="toggleMode" mode="flat">{{
+          btnSignupText
+        }}</base-button>
+      </div>
+    </form>
+    <div class="img-box">
+      <img
+        class="image-note"
+        src="../img/cover2.jpg"
+        alt="taking notes near a laptop"
+      />
+    </div>
   </section>
 </template>
+<script>
+import { computed, ref } from "vue";
+export default {
+  setup() {
+    const mode = ref("login");
+    function toggleMode() {
+      if (mode.value === "login") mode.value = "signup";
+      else mode.value = "login";
+    }
+    const btnLoginText = computed(function () {
+      if (mode.value === "login") return "Login";
+      else return "Signup";
+    });
+    const btnSignupText = computed(function () {
+      if (mode.value === "login") return "Signup instead";
+      else return "Login instead";
+    });
+    return { toggleMode, btnLoginText, btnSignupText };
+  },
+};
+</script>
 <style scoped>
 section {
-  text-align: center;
   grid-row: 2/-1;
   grid-column: 1/-1;
+  padding: 2rem 4rem;
+  display: flex;
+  align-items: center;
+  background-color: #ffd58d84;
+}
+form {
+  margin-left: 4rem;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.8rem;
+}
+.img-box {
+  width: 50%;
+}
+.image-note {
+  width: 100%;
+  border-radius: 2rem;
+}
+h2 {
+  font-family: "Rubik";
+  font-weight: 700;
+  margin-bottom: 1.4rem;
+  font-size: 4rem;
+  line-height: 1.1;
+  letter-spacing: 0.2px;
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+label,
+input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+label {
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+}
+input {
+  width: 18rem;
 }
 </style>

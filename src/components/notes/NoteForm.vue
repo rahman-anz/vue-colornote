@@ -2,18 +2,17 @@
   <form @submit.prevent="addNote">
     <h2>Start Creating Notes</h2>
     <div class="form-control">
-      <input placeholder="Title" id="title" type="text" v-model="title" />
+      <input placeholder="Title" class="title" type="text" v-model="title" />
     </div>
     <div class="form-control">
       <textarea
         placeholder="Description"
-        id="desc"
-        cols="100"
+        class="desc"
         rows="10"
         v-model="desc"
       ></textarea>
     </div>
-    <p v-if="invalidForm">Please enter valid characters</p>
+    <p v-if="invalidForm" class="errorMsg">Please enter some input</p>
     <base-button radius="curved">Submit</base-button>
   </form>
 </template>
@@ -25,7 +24,7 @@ export default {
   setup() {
     const title = ref("");
     const desc = ref("");
-    const invalidForm = ref("false");
+    const invalidForm = ref(false);
     const store = useNoteStore();
     const router = useRouter();
 
@@ -50,7 +49,10 @@ export default {
 <style scoped>
 form {
   background-color: #ffd68d;
-  padding: 1rem 2rem;
+  padding: 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 h2 {
   text-align: center;
@@ -60,15 +62,19 @@ h2 {
 .form-control {
   margin: 2rem 0;
 }
-#title,
-#desc {
+.title,
+.desc {
   background-color: #ffedcc;
   border: none;
-  border-radius: 8px;
+  border-radius: 9px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   padding: 1rem;
+  width: 600px;
 }
-#title {
-  height: 3rem;
+
+.errorMsg {
+  font-size: 1.8rem;
+  color: red;
+  margin-bottom: 1rem;
 }
 </style>

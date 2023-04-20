@@ -9,18 +9,21 @@ export const useNoteStore = defineStore("note", {
           title: "The Name's Bond",
           description:
             "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur iur Lorem ipsum dolor sit, amet consectetur adip",
+          isPinned: false,
         },
         {
           id: "c2",
           title: "John Cena",
           description:
             "Dolores iur Lorem ipsum dolor siDolores iur Lorem ipsum dolor siDolores iur Lorem ipsum dolor siDolores iur Lorem ipsum dolor si",
+          isPinned: false,
         },
         {
           id: "c3",
           title: "Freddy Mercury",
           description:
             "architecto possimus molestias. Odit sit est pariatur obcaecati. Dicta",
+          isPinned: false,
         },
       ],
     };
@@ -40,7 +43,6 @@ export const useNoteStore = defineStore("note", {
         title: title,
         description: desc,
       };
-      console.log(newNote);
       this.notes.unshift(newNote);
     },
     removeNote(id) {
@@ -48,6 +50,11 @@ export const useNoteStore = defineStore("note", {
       console.log(selectedNoteIndex);
       this.notes.splice(selectedNoteIndex, 1);
       console.log(this.notes);
+    },
+    togglePin(id) {
+      const selectedNote = this.noteById(id);
+      selectedNote.isPinned = !selectedNote.isPinned;
+      console.log(selectedNote);
     },
   },
 });
