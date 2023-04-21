@@ -3,7 +3,7 @@
     <router-link :to="id" class="note">
       <h3 class="note-title">{{ title }}</h3>
       <p class="note-description">
-        {{ description.slice(0, 90) }}
+        {{ description.slice(0, 110) }}
       </p>
 
       <base-button
@@ -38,7 +38,7 @@ export default {
 </script>
 <style scoped>
 .note {
-  height: 7rem;
+  height: 7.5rem;
   background-color: #ffda98;
   text-decoration: none;
   color: #333;
@@ -52,6 +52,10 @@ export default {
 }
 .note:hover {
   scale: 1.02;
+}
+.note:active,
+.note.router-link-active {
+  background-color: #ffc45da4;
 }
 .note:hover .icon-position {
   opacity: 1;

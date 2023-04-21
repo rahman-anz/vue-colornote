@@ -4,21 +4,24 @@
     <p>
       {{ selectedNote.description }}
     </p>
-    <base-button @click="deleteNote" mode="circle" class="icon-position">
-      <TrashIcon class="icon-trash" />
+    <base-button @click="editNote" mode="circle" class="icon-position1"
+      ><PencilIcon class="icon-edit"
+    /></base-button>
+    <base-button @click="deleteNote" mode="circle" class="icon-position2">
+      <TrashIcon class="icon-edit" />
     </base-button>
   </note-outline>
 </template>
 
 <script>
-import { TrashIcon } from "@heroicons/vue/24/outline";
+import { TrashIcon, PencilIcon } from "@heroicons/vue/24/outline";
 import { useNoteStore } from "@/store/note";
 import { computed } from "vue";
 import { useRouter } from "vue-router";
 
 export default {
   props: ["id"],
-  components: { TrashIcon },
+  components: { TrashIcon, PencilIcon },
   setup(props) {
     const store = useNoteStore();
     const router = useRouter();
@@ -29,11 +32,15 @@ export default {
         return false;
       }
     });
+    function editNote() {
+      store.editNote(props.id);
+      router.push("create");
+    }
     function deleteNote() {
       store.removeNote(props.id);
       router.replace("welcome");
     }
-    return { selectedNote, deleteNote };
+    return { selectedNote, deleteNote, editNote };
   },
 };
 </script>
@@ -45,12 +52,17 @@ section h2 {
   font-weight: 600;
 }
 
-.icon-position {
+.icon-position1 {
+  position: absolute;
+  bottom: 10rem;
+  right: 14rem;
+}
+.icon-position2 {
   position: absolute;
   bottom: 10rem;
   right: 8rem;
 }
-.icon-trash {
+.icon-edit {
   width: 2.6rem;
 }
 

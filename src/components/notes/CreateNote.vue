@@ -13,13 +13,12 @@ export default {
 </script>
 <style scoped>
 .create-note {
-  height: 9rem;
+  height: 7rem;
   margin: 1rem;
   text-decoration: none;
   color: #333;
   width: 97%;
-  height: 13%;
-  background-color: #ffd080;
+  background-color: #fbc669;
   border-radius: 1rem;
   display: flex;
   align-items: center;
@@ -28,6 +27,9 @@ export default {
 .create-note:hover {
   scale: 1.02;
 }
+/* .create-note:active,
+.create-note.router-link-active  */
+
 .icon-pen {
   margin-left: 2rem;
   width: 4.3rem;

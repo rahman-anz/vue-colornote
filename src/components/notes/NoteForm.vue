@@ -8,12 +8,11 @@
       <textarea
         placeholder="Description"
         class="desc"
-        rows="10"
         v-model="desc"
       ></textarea>
     </div>
     <p v-if="invalidForm" class="errorMsg">Please enter some input</p>
-    <base-button mode="curved">Submit</base-button>
+    <base-button mode="curved">Save</base-button>
   </form>
 </template>
 <script>
@@ -22,16 +21,19 @@ import { useNoteStore } from "@/store/note";
 import { useRouter } from "vue-router";
 export default {
   setup() {
+    const store = useNoteStore();
+    const router = useRouter();
     const title = ref("");
     const desc = ref("");
     const invalidForm = ref(false);
-    const store = useNoteStore();
-    const router = useRouter();
 
-    function validateForm() {
-      invalidForm.value = false;
-      if (title.value === "" || desc.value === "") {
-        invalidForm.value = true;
+    editNote();
+    function editNote() {
+      if (store.edits === "") return;
+      else {
+        title.value = store.edits.title;
+        desc.value = store.edits.description;
+        store.clearEdits();
       }
     }
 
@@ -42,7 +44,15 @@ export default {
       store.addNote(id, title, desc);
       router.push(`${id}`);
     }
-    return { title, desc, addNote, invalidForm };
+
+    function validateForm() {
+      invalidForm.value = false;
+      if (title.value === "" || desc.value === "") {
+        invalidForm.value = true;
+      }
+    }
+
+    return { title, desc, addNote, editNote, invalidForm };
   },
 };
 </script>
@@ -53,10 +63,12 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 h2 {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #444;
 }
 .form-control {
@@ -72,7 +84,9 @@ h2 {
   width: 50vw;
   white-space: pre;
 }
-
+.desc {
+  height: 40vh;
+}
 .errorMsg {
   font-size: 1.8rem;
   color: red;

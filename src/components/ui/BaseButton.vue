@@ -14,10 +14,10 @@ export default {
 <style scoped>
 button {
   /* width: 3.5rem; */
-  padding: 1rem;
+  padding: 1.3rem 1.8rem;
   border: none;
   background-color: #fdba45;
-
+  font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,6 +32,7 @@ button:hover {
 }
 .circle {
   border-radius: 50%;
+  padding: 1rem;
 }
 .curved {
   border-radius: 10px;

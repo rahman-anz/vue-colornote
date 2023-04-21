@@ -33,6 +33,7 @@ export const useNoteStore = defineStore("note", {
           isPinned: true,
         },
       ],
+      edits: "",
     };
   },
   getters: {
@@ -41,6 +42,9 @@ export const useNoteStore = defineStore("note", {
     },
     getNotes(state) {
       return state.notes;
+    },
+    getEdits(state) {
+      return state.edits;
     },
   },
   actions: {
@@ -56,11 +60,16 @@ export const useNoteStore = defineStore("note", {
       };
       this.notes.unshift(newNote);
     },
+    editNote(id) {
+      this.edits = this.noteById(id);
+      this.removeNote(id);
+    },
+    clearEdits() {
+      this.edits = "";
+    },
     removeNote(id) {
       const selectedNoteIndex = this.notes.findIndex((note) => note.id === id);
-      console.log(selectedNoteIndex);
       this.notes.splice(selectedNoteIndex, 1);
-      console.log(this.notes);
     },
     togglePin(id) {
       const selectedNote = this.noteById(id);

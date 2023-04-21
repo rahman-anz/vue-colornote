@@ -34,7 +34,6 @@ export default {
         }
       });
     });
-    console.log(sortedNotes);
     return { store, sortedNotes };
   },
 };
