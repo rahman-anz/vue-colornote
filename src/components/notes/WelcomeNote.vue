@@ -1,8 +1,8 @@
 <template>
-  <section>
+  <note-outline>
     <h2>Welcome to Colornote</h2>
     <p>Have fun creating and adding notes 🙂</p>
-  </section>
+  </note-outline>
 </template>
 <style scoped>
 section h2 {

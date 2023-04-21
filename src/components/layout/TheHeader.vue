@@ -27,6 +27,7 @@ export default {
   display: flex;
   align-items: center;
   grid-column: 1/-1;
+  min-height: 2rem;
 }
 .logo {
   font-family: "Lobster";

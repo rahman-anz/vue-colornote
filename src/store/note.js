@@ -13,9 +13,9 @@ export const useNoteStore = defineStore("note", {
         },
         {
           id: "c2",
-          title: "John Cena",
+          title: "Movies WatchList",
           description:
-            "Dolores iur Lorem ipsum dolor siDolores iur Lorem ipsum dolor siDolores iur Lorem ipsum dolor siDolores iur Lorem ipsum dolor si",
+            "Antman Quantumania, Thaapad, Ruby Sparks, Before Sunrise, Agro,  Athena, Into the wild, Uncut gems, Women King, Banshees of Insherin ",
           isPinned: false,
         },
         {
@@ -24,6 +24,13 @@ export const useNoteStore = defineStore("note", {
           description:
             "architecto possimus molestias. Odit sit est pariatur obcaecati. Dicta",
           isPinned: false,
+        },
+        {
+          id: "c4",
+          title: "Serenity Prayer",
+          description:
+            "God grant me the serenity to accept the things I cannot change, courage to change the things I can, and the wisdom to know the difference. Living one day at a time, enjoying one moment at a time, taking this world as it is and not as I would have it.",
+          isPinned: true,
         },
       ],
     };

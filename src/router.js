@@ -7,7 +7,7 @@ import WelcomeNote from "./components/notes/WelcomeNote.vue";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/", redirect: "/main/c3" },
+    { path: "/", redirect: "/main/welcome" },
     { path: "/auth", component: UserAuth },
     {
       path: "/main",
@@ -22,7 +22,7 @@ const router = createRouter({
         },
       ],
     },
-    { path: "/:notFound(.*)", redirect: "/main/c3" },
+    { path: "/:notFound(.*)", redirect: "/main/welcome" },
   ],
 });
 export default router;

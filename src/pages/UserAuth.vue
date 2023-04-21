@@ -40,7 +40,7 @@ export default {
     }
     const router = useRouter();
     function login() {
-      router.replace("main/create");
+      router.replace("main/welcome");
     }
     const btnLoginText = computed(function () {
       if (mode.value === "login") return "Login";

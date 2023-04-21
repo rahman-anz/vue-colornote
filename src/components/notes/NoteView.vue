@@ -1,5 +1,5 @@
 <template>
-  <section v-if="selectedNote">
+  <note-outline v-if="selectedNote">
     <h2>{{ selectedNote.title }}</h2>
     <p>
       {{ selectedNote.description }}
@@ -7,7 +7,7 @@
     <base-button @click="deleteNote" mode="circle" class="icon-position">
       <TrashIcon class="icon-trash" />
     </base-button>
-  </section>
+  </note-outline>
 </template>
 
 <script>
@@ -15,6 +15,7 @@ import { TrashIcon } from "@heroicons/vue/24/outline";
 import { useNoteStore } from "@/store/note";
 import { computed } from "vue";
 import { useRouter } from "vue-router";
+
 export default {
   props: ["id"],
   components: { TrashIcon },
@@ -30,24 +31,13 @@ export default {
     });
     function deleteNote() {
       store.removeNote(props.id);
-      router.replace("create");
+      router.replace("welcome");
     }
     return { selectedNote, deleteNote };
   },
 };
 </script>
 <style scoped>
-section {
-  background: repeating-linear-gradient(
-    to bottom,
-    #ffd68d,
-    #ffd68d 3rem,
-    #f6ba52 3.1rem,
-    #f6ba52 3.2rem
-  );
-  padding: 1rem 2rem;
-  position: relative;
-}
 section h2 {
   text-align: center;
   margin-top: 2rem;
