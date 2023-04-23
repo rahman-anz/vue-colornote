@@ -52,6 +52,9 @@ export const useNoteStore = defineStore("note", {
       return this.notes.find((note) => note.id === id);
     },
     addNote(id, title, desc) {
+      if (this.noteById(id)) {
+        this.removeNote(id);
+      }
       const newNote = {
         id: id,
         title: title,
@@ -59,10 +62,10 @@ export const useNoteStore = defineStore("note", {
         isPinned: false,
       };
       this.notes.unshift(newNote);
+      console.log(this.notes);
     },
     editNote(id) {
       this.edits = this.noteById(id);
-      this.removeNote(id);
     },
     clearEdits() {
       this.edits = "";

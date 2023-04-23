@@ -23,6 +23,7 @@ export default {
   setup() {
     const store = useNoteStore();
     const router = useRouter();
+    const id = ref("");
     const title = ref("");
     const desc = ref("");
     const invalidForm = ref(false);
@@ -31,6 +32,7 @@ export default {
     function editNote() {
       if (store.edits === "") return;
       else {
+        id.value = store.edits.id;
         title.value = store.edits.title;
         desc.value = store.edits.description;
         store.clearEdits();
@@ -40,9 +42,9 @@ export default {
     function addNote() {
       validateForm();
       if (invalidForm.value) return;
-      const id = new Date().toISOString();
-      store.addNote(id, title, desc);
-      router.push(`${id}`);
+      id.value = id.value ? id.value : new Date().toISOString();
+      store.addNote(id.value, title.value, desc.value);
+      router.push(`${id.value}`);
     }
 
     function validateForm() {
