@@ -45,7 +45,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.4rem;
+  padding: 0rem 0.4rem;
   overflow-y: scroll;
   overflow-x: hidden;
 }

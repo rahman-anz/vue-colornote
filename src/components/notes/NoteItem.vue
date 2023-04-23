@@ -5,16 +5,15 @@
       <p class="note-description">
         {{ description.slice(0, 110) }}
       </p>
-
-      <base-button
-        @click="togglePin"
-        :isPinned="getPinStatus"
-        mode="circle"
-        class="icon-position"
-      >
-        <BookmarkIcon class="icon-pin" />
-      </base-button>
     </router-link>
+    <base-button
+      @click="togglePin"
+      :isPinned="getPinStatus"
+      mode="circle"
+      class="icon-position"
+    >
+      <BookmarkIcon class="icon-pin" />
+    </base-button>
   </li>
 </template>
 <script>
@@ -37,6 +36,9 @@ export default {
 };
 </script>
 <style scoped>
+li {
+  position: relative;
+}
 .note {
   height: 7.5rem;
   background-color: #ffda98;
@@ -47,17 +49,24 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  position: relative;
+
   overflow: hidden;
+}
+.icon-position {
+  opacity: 0;
+  position: absolute;
+  right: 5%;
+  top: 25%;
 }
 .note:hover {
   scale: 1.02;
 }
-.note:active,
 .note.router-link-active {
   background-color: #ffc45da4;
+  border: #ffbb46 1px solid;
 }
-.note:hover .icon-position {
+.icon-position:hover,
+.note:hover + .icon-position {
   opacity: 1;
 }
 .note-title {
@@ -67,13 +76,6 @@ export default {
 
 .note-description {
   font-size: 1.3rem;
-}
-
-.icon-position {
-  opacity: 0;
-  position: absolute;
-  right: 5%;
-  top: 25%;
 }
 
 .icon-pin {

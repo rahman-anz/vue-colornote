@@ -11,12 +11,8 @@
         <input type="password" class="password" />
       </div>
       <div class="actions">
-        <base-button @click="login" mode="curved">{{
-          btnLoginText
-        }}</base-button>
-        <base-button @click="toggleMode" mode="flat">{{
-          btnSignupText
-        }}</base-button>
+        <base-button @click="login" mode="curved">Login</base-button>
+        <base-button @click="login" mode="flat"> Signup instead </base-button>
       </div>
     </form>
     <div class="img-box">
@@ -30,27 +26,16 @@
 </template>
 <script>
 import { useRouter } from "vue-router";
-import { computed, ref } from "vue";
+// import { ref } from "vue";
 export default {
   setup() {
-    const mode = ref("login");
-    function toggleMode() {
-      if (mode.value === "login") mode.value = "signup";
-      else mode.value = "login";
-    }
+    // const mode = ref("login");
+
     const router = useRouter();
     function login() {
       router.replace("main/welcome");
     }
-    const btnLoginText = computed(function () {
-      if (mode.value === "login") return "Login";
-      else return "Signup";
-    });
-    const btnSignupText = computed(function () {
-      if (mode.value === "login") return "Signup instead";
-      else return "Login instead";
-    });
-    return { toggleMode, login, btnLoginText, btnSignupText };
+    return { login };
   },
 };
 </script>
@@ -105,6 +90,7 @@ label {
   margin-bottom: 0.3rem;
 }
 input {
-  width: 18rem;
+  width: 20rem;
+  height: 2.2rem;
 }
 </style>
