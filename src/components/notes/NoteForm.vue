@@ -26,6 +26,7 @@ export default {
     const id = ref("");
     const title = ref("");
     const desc = ref("");
+    const isPinned = ref("");
     const invalidForm = ref(false);
 
     editNote();
@@ -35,6 +36,7 @@ export default {
         id.value = store.edits.id;
         title.value = store.edits.title;
         desc.value = store.edits.description;
+        isPinned.value = store.edits.isPinned;
         store.clearEdits();
       }
     }
@@ -43,7 +45,7 @@ export default {
       validateForm();
       if (invalidForm.value) return;
       id.value = id.value ? id.value : new Date().toISOString();
-      store.addNote(id.value, title.value, desc.value);
+      store.addNote(id.value, title.value, desc.value, isPinned.value);
       router.push(`${id.value}`);
     }
 

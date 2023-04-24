@@ -1,5 +1,5 @@
 <template>
-  <button :class="[mode, { pinned: isPinned }]">
+  <button :class="[mode]">
     <slot></slot>
   </button>
 </template>
@@ -7,7 +7,6 @@
 export default {
   props: {
     mode: { type: String, required: false, default: null },
-    isPinned: { type: Boolean, required: false, default: false },
   },
 };
 </script>
@@ -26,9 +25,6 @@ button {
 button:hover {
   scale: 110%;
   background-color: rgb(237, 178, 77);
-}
-.pinned {
-  opacity: 1;
 }
 .circle {
   border-radius: 50%;

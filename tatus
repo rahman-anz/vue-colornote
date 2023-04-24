@@ -1,0 +1,77 @@
+[33mcommit a2bcd7bc74554dfa9303f640184f909a82ba5c44[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: rahman-anz <rahmanctanas@gmail.com>
+Date:   Sun Apr 23 15:02:11 2023 +0530
+
+    Separated Button Pin from Router link
+
+[33mcommit b9f4fdb9cf62f733588bc9987dfcde3b7a255ad1[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: rahman-anz <rahmanctanas@gmail.com>
+Date:   Sun Apr 23 13:01:34 2023 +0530
+
+    Debugging a Netlify Specific Issue Regarding Redirection
+
+[33mcommit 216574bb6a84c6ed8808265d14dd6b7a26529193[m
+Author: rahman-anz <rahmanctanas@gmail.com>
+Date:   Sun Apr 23 12:43:37 2023 +0530
+
+    Improved the Implementation of Editing Notes
+
+[33mcommit 0e47f72e2c792030d031c6bde715b57a08575d1f[m
+Author: rahman-anz <rahmanctanas@gmail.com>
+Date:   Fri Apr 21 20:46:59 2023 +0530
+
+    Implemented Editing Note Feature
+
+[33mcommit e7191f5007403d78feff1ce78bbce8459b394886[m
+Author: rahman-anz <rahmanctanas@gmail.com>
+Date:   Fri Apr 21 16:50:18 2023 +0530
+
+    Created a Welcome Component
+
+[33mcommit e69b0db6bff5725250f19cb7b09c0e700e4a800c[m
+Author: rahman-anz <rahmanctanas@gmail.com>
+Date:   Thu Apr 20 20:31:50 2023 +0530
+
+    Implemented Message Pinning
+
+[33mcommit f85130943deeb72df9b09a89881c351b422b9dad[m
+Author: rahman-anz <rahmanctanas@gmail.com>
+Date:   Thu Apr 20 13:32:57 2023 +0530
+
+    Designed a Landing Page
+
+[33mcommit ed9f7a71f94266cb896961b972f64807a48574ad[m
+Author: rahman-anz <rahmanctanas@gmail.com>
+Date:   Wed Apr 19 13:03:58 2023 +0530
+
+    Implemented Adding & Removing Notes
+
+[33mcommit 786e8149354516c3d4c4435cb9c9eb919ae55ef8[m
+Author: rahman-anz <rahmanctanas@gmail.com>
+Date:   Tue Apr 18 13:28:00 2023 +0530
+
+    Replaced Icons with Ionicons and font to Inter
+
+[33mcommit 87b6feffacb7fd92f29a71eed193c64e6aee82ca[m
+Author: rahman-anz <rahmanctanas@gmail.com>
+Date:   Mon Apr 17 21:03:56 2023 +0530
+
+    Impemented Note Viewing
+
+[33mcommit 768b3e88dcd81ee8b17218fd3be11786d23e6dc9[m
+Author: rahman-anz <rahmanctanas@gmail.com>
+Date:   Mon Apr 17 14:06:57 2023 +0530
+
+    Added Pages to Router
+
+[33mcommit 6cda156b6349fa92143f4fdf1d1bab04d2a36779[m
+Author: rahman-anz <rahmanctanas@gmail.com>
+Date:   Sun Apr 16 21:37:40 2023 +0530
+
+    working on components
+
+[33mcommit f2b424a4dd2387ec641606912ab1f2074b8d9a43[m
+Author: rahman-anz <rahmanctanas@gmail.com>
+Date:   Sun Apr 16 20:52:43 2023 +0530
+
+    init

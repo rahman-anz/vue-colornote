@@ -51,7 +51,7 @@ export const useNoteStore = defineStore("note", {
     noteById(id) {
       return this.notes.find((note) => note.id === id);
     },
-    addNote(id, title, desc) {
+    addNote(id, title, desc, isPinned) {
       if (this.noteById(id)) {
         this.removeNote(id);
       }
@@ -59,7 +59,7 @@ export const useNoteStore = defineStore("note", {
         id: id,
         title: title,
         description: desc,
-        isPinned: false,
+        isPinned: isPinned,
       };
       this.notes.unshift(newNote);
       console.log(this.notes);
