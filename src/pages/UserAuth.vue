@@ -26,7 +26,6 @@
 </template>
 <script>
 import { useRouter } from "vue-router";
-// import { ref } from "vue";
 export default {
   setup() {
     // const mode = ref("login");
@@ -35,6 +34,7 @@ export default {
     function login() {
       router.replace("main/welcome");
     }
+
     return { login };
   },
 };

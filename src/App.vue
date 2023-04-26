@@ -9,7 +9,6 @@
 
 <script>
 import TheHeader from "./components/layout/TheHeader.vue";
-// import NoteSection from "./components/NoteSection.vue";
 export default {
   components: { TheHeader },
 };

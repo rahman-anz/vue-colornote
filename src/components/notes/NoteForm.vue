@@ -12,8 +12,17 @@
       ></textarea>
     </div>
     <p v-if="invalidForm" class="errorMsg">Please enter some input</p>
-    <base-button mode="curved">Save</base-button>
+    <base-button @click="submitNote" mode="curved">Save</base-button>
   </form>
+  <base-dialog v-if="dialogVisible"
+    ><template #default
+      >Are you sure about making the changes to the existing note ?</template
+    >
+    <template #actions
+      ><base-button @click="confirmEdits" mode="flat">Yes</base-button
+      ><base-button @click="closeDialog" mode="flat">No</base-button></template
+    ></base-dialog
+  >
 </template>
 <script>
 import { ref } from "vue";
@@ -27,7 +36,6 @@ export default {
     const title = ref("");
     const desc = ref("");
     const isPinned = ref("");
-    const invalidForm = ref(false);
 
     editNote();
     function editNote() {
@@ -40,23 +48,46 @@ export default {
         store.clearEdits();
       }
     }
-
-    function addNote() {
+    const dialogVisible = ref(false);
+    function closeDialog() {
+      dialogVisible.value = false;
+    }
+    function submitNote() {
       validateForm();
       if (invalidForm.value) return;
-      id.value = id.value ? id.value : new Date().toISOString();
-      store.addNote(id.value, title.value, desc.value, isPinned.value);
-      router.push(`${id.value}`);
+      if (id.value) {
+        dialogVisible.value = true;
+        return;
+      }
+      addNote();
     }
-
+    const invalidForm = ref(false);
     function validateForm() {
       invalidForm.value = false;
       if (title.value === "" || desc.value === "") {
         invalidForm.value = true;
       }
     }
+    function confirmEdits() {
+      dialogVisible.value = false;
+      addNote();
+    }
+    function addNote() {
+      id.value = id.value ? id.value : new Date().toISOString();
+      store.addNote(id.value, title.value, desc.value, isPinned.value);
+      router.push(`${id.value}`);
+    }
 
-    return { title, desc, addNote, editNote, invalidForm };
+    return {
+      title,
+      desc,
+      dialogVisible,
+      closeDialog,
+      submitNote,
+      editNote,
+      confirmEdits,
+      invalidForm,
+    };
   },
 };
 </script>

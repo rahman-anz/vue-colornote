@@ -7,16 +7,26 @@
     <base-button @click="editNote" mode="circle" class="icon-position1"
       ><PencilIcon class="icon-edit"
     /></base-button>
-    <base-button @click="deleteNote" mode="circle" class="icon-position2">
+    <base-button @click="openDialog" mode="circle" class="icon-position2">
       <TrashIcon class="icon-edit" />
     </base-button>
   </note-outline>
+  <base-dialog v-if="dialogVisible" @close="closeDialog"
+    ><template #header>Message</template
+    ><template #default
+      >Are you sure you want to delete the selected note ?</template
+    >
+    <template #actions
+      ><base-button mode="flat" @click="confirmDeletion">Yes</base-button
+      ><base-button mode="flat" @click="closeDialog">No</base-button></template
+    ></base-dialog
+  >
 </template>
 
 <script>
 import { TrashIcon, PencilIcon } from "@heroicons/vue/24/outline";
 import { useNoteStore } from "@/store/note";
-import { computed } from "vue";
+import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 
 export default {
@@ -25,6 +35,7 @@ export default {
   setup(props) {
     const store = useNoteStore();
     const router = useRouter();
+
     const selectedNote = computed(function () {
       if (props.id) {
         return store.noteById(props.id);
@@ -36,11 +47,28 @@ export default {
       store.editNote(props.id);
       router.push("create");
     }
-    function deleteNote() {
+    const dialogVisible = ref(false);
+    function openDialog() {
+      dialogVisible.value = true;
+    }
+    function closeDialog() {
+      dialogVisible.value = false;
+    }
+
+    function confirmDeletion() {
       store.removeNote(props.id);
       router.replace("welcome");
+      closeDialog();
     }
-    return { selectedNote, deleteNote, editNote };
+
+    return {
+      selectedNote,
+      editNote,
+      dialogVisible,
+      openDialog,
+      closeDialog,
+      confirmDeletion,
+    };
   },
 };
 </script>
@@ -67,8 +95,8 @@ section h2 {
 }
 
 section p {
-  font-size: 1.8rem;
-  width: 95%;
+  font-size: 1.9rem;
+  margin: 0 2rem;
   margin-top: 3rem;
   line-height: 3.2rem;
 }

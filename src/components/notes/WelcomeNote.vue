@@ -1,7 +1,10 @@
 <template>
   <note-outline>
     <h2>Welcome to Colornote</h2>
-    <p>Have fun creating and adding notes 🙂</p>
+    <p>
+      Tired of not having the right info handy when you need it ? Add a note in
+      our app and never forget a thing ! Have fun creating and adding notes 🙂
+    </p>
   </note-outline>
 </template>
 <style scoped>
@@ -12,9 +15,10 @@ section h2 {
   font-weight: 600;
 }
 section p {
-  font-size: 1.8rem;
-  width: 95%;
+  font-size: 2rem;
+  width: 90%;
   margin-top: 3rem;
   line-height: 3.2rem;
+  text-align: center;
 }
 </style>

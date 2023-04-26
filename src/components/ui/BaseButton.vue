@@ -16,6 +16,7 @@ button {
   padding: 1.3rem 1.8rem;
   border: none;
   background-color: #fdba45;
+  font-size: 1.5rem;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -35,12 +36,12 @@ button:hover {
 }
 .flat {
   border-radius: 10px;
-  border: #fdba45 2px solid;
+  border: #ffb028 2px solid;
   background-color: #ffd183;
 }
 .flat:hover {
   scale: none;
-  background-color: #ffd183;
-  border: #a2762a 2px solid;
+  background-color: #ffc869;
+  border: #ffb028 2px solid;
 }
 </style>
