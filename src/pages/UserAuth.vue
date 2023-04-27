@@ -31,9 +31,9 @@ export default {
     // const mode = ref("login");
 
     const router = useRouter();
-    function login() {
+    const login = () => {
       router.replace("main/welcome");
-    }
+    };
 
     return { login };
   },
@@ -92,5 +92,9 @@ label {
 input {
   width: 20rem;
   height: 2.2rem;
+}
+input:focus {
+  outline: #e5a537 2px solid;
+  border: #e5a537 1px solid;
 }
 </style>

@@ -1,48 +1,46 @@
 import { defineStore } from "pinia";
 export const useNoteStore = defineStore("note", {
-  state() {
-    return {
-      notes: [
-        {
-          id: "c1",
-          title: "The Name's Bond",
-          description:
-            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur iur Lorem ipsum dolor sit, amet consectetur adip",
-          isPinned: false,
-        },
-        {
-          id: "c2",
-          title: "Movies WatchList",
-          description:
-            "Antman Quantumania, Thaapad, Ruby Sparks, Before Sunrise, Agro,  Athena, Into the wild, Uncut gems, Women King, Banshees of Insherin ",
-          isPinned: false,
-        },
-        {
-          id: "c3",
-          title: "Freddy Mercury",
-          description:
-            "architecto possimus molestias. Odit sit est pariatur obcaecati. Dicta",
-          isPinned: false,
-        },
-        {
-          id: "c4",
-          title: "Serenity Prayer",
-          description:
-            "God grant me the serenity to accept the things I cannot change, courage to change the things I can, and the wisdom to know the difference. Living one day at a time, enjoying one moment at a time, taking this world as it is and not as I would have it.",
-          isPinned: true,
-        },
-      ],
-      edits: "",
-    };
-  },
+  state: () => ({
+    notes: [
+      {
+        id: "c1",
+        title: "The Name's Bond",
+        description:
+          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur iur Lorem ipsum dolor sit, amet consectetur adip",
+        isPinned: false,
+      },
+      {
+        id: "c2",
+        title: "Movies WatchList",
+        description:
+          "Antman Quantumania, Thaapad, Ruby Sparks, Before Sunrise, Agro,  Athena, Into the wild, Uncut gems, Women King, Banshees of Insherin ",
+        isPinned: false,
+      },
+      {
+        id: "c3",
+        title: "Freddy Mercury",
+        description:
+          "architecto possimus molestias. Odit sit est pariatur obcaecati. Dicta",
+        isPinned: false,
+      },
+      {
+        id: "c4",
+        title: "Serenity Prayer",
+        description:
+          "God grant me the serenity to accept the things I cannot change, courage to change the things I can, and the wisdom to know the difference. Living one day at a time, enjoying one moment at a time, taking this world as it is and not as I would have it.",
+        isPinned: true,
+      },
+    ],
+    edits: "",
+  }),
   getters: {
-    hasNotes(state) {
+    hasNotes: (state) => {
       return state.notes && state.notes.length > 0;
     },
-    getNotes(state) {
+    getNotes: (state) => {
       return state.notes;
     },
-    getEdits(state) {
+    getEdits: (state) => {
       return state.edits;
     },
   },

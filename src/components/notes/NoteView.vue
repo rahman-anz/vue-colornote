@@ -12,7 +12,6 @@
     </base-button>
   </note-outline>
   <base-dialog v-if="dialogVisible" @close="closeDialog"
-    ><template #header>Message</template
     ><template #default
       >Are you sure you want to delete the selected note ?</template
     >
@@ -36,30 +35,31 @@ export default {
     const store = useNoteStore();
     const router = useRouter();
 
-    const selectedNote = computed(function () {
+    const selectedNote = computed(() => {
       if (props.id) {
         return store.noteById(props.id);
       } else {
         return false;
       }
     });
-    function editNote() {
+    const editNote = () => {
       store.editNote(props.id);
       router.push("create");
-    }
-    const dialogVisible = ref(false);
-    function openDialog() {
-      dialogVisible.value = true;
-    }
-    function closeDialog() {
-      dialogVisible.value = false;
-    }
+    };
 
-    function confirmDeletion() {
+    const dialogVisible = ref(false);
+    const openDialog = () => {
+      dialogVisible.value = true;
+    };
+    const closeDialog = () => {
+      dialogVisible.value = false;
+    };
+
+    const confirmDeletion = () => {
       store.removeNote(props.id);
       router.replace("welcome");
       closeDialog();
-    }
+    };
 
     return {
       selectedNote,

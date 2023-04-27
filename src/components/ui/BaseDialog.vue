@@ -6,7 +6,7 @@
         <h2><slot name="header">Alert</slot></h2>
       </header>
       <section>
-        <p><slot>Some mumbo jumbo</slot></p>
+        <p><slot></slot></p>
       </section>
       <menu v-if="!fixed"
         ><slot name="actions">
@@ -29,12 +29,12 @@ export default {
     },
   },
   setup(props, context) {
-    function tryClose() {
+    const tryClose = () => {
       if (props.fixed) {
         return;
       }
       context.emit("close");
-    }
+    };
     return { tryClose };
   },
 };
@@ -54,7 +54,7 @@ dialog {
   position: fixed;
   top: 30vh;
   left: 30%;
-  width: 40%;
+  min-width: 40%;
   z-index: 20;
   /* border-radius: 12px; */
   border-radius: 2rem;
@@ -77,7 +77,7 @@ header h2 {
 }
 section {
   /* padding: 1rem; */
-  margin: 3rem 0rem;
+  margin: 3rem 4rem;
 }
 section p {
   font-size: 2rem;

@@ -35,10 +35,9 @@ export default {
     const id = ref("");
     const title = ref("");
     const desc = ref("");
-    const isPinned = ref("");
+    const isPinned = ref(false);
 
-    editNote();
-    function editNote() {
+    const editNote = () => {
       if (store.edits === "") return;
       else {
         id.value = store.edits.id;
@@ -47,12 +46,13 @@ export default {
         isPinned.value = store.edits.isPinned;
         store.clearEdits();
       }
-    }
+    };
+    editNote();
     const dialogVisible = ref(false);
-    function closeDialog() {
+    const closeDialog = () => {
       dialogVisible.value = false;
-    }
-    function submitNote() {
+    };
+    const submitNote = () => {
       validateForm();
       if (invalidForm.value) return;
       if (id.value) {
@@ -60,23 +60,23 @@ export default {
         return;
       }
       addNote();
-    }
+    };
     const invalidForm = ref(false);
-    function validateForm() {
+    const validateForm = () => {
       invalidForm.value = false;
       if (title.value === "" || desc.value === "") {
         invalidForm.value = true;
       }
-    }
-    function confirmEdits() {
+    };
+    const confirmEdits = () => {
       dialogVisible.value = false;
       addNote();
-    }
-    function addNote() {
+    };
+    const addNote = () => {
       id.value = id.value ? id.value : new Date().toISOString();
       store.addNote(id.value, title.value, desc.value, isPinned.value);
       router.push(`${id.value}`);
-    }
+    };
 
     return {
       title,
@@ -118,6 +118,11 @@ h2 {
   padding: 1rem;
   width: 50vw;
   white-space: pre;
+}
+.title:focus,
+.desc:focus {
+  outline: #e5a537 3px solid;
+  border: #e5a537 1px solid;
 }
 .desc {
   height: 40vh;

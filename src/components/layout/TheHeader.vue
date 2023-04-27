@@ -13,9 +13,9 @@ import { useRouter } from "vue-router";
 export default {
   setup() {
     const router = useRouter();
-    function logout() {
+    const logout = () => {
       router.replace("/auth");
-    }
+    };
     return { logout };
   },
 };

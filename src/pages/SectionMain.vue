@@ -23,7 +23,7 @@ export default {
   setup() {
     const store = useNoteStore();
     const notes = store.getNotes;
-    const sortedNotes = computed(function () {
+    const sortedNotes = computed(() => {
       return notes.slice().sort((a, b) => {
         if (a.isPinned === true && b.isPinned === false) {
           return -1;

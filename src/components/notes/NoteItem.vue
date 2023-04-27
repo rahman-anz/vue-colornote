@@ -33,10 +33,10 @@ export default {
   props: ["id", "title", "description"],
   setup(props) {
     const store = useNoteStore();
-    function togglePin() {
+    const togglePin = () => {
       store.togglePin(props.id);
-    }
-    const getPinStatus = computed(function () {
+    };
+    const getPinStatus = computed(() => {
       return store.getPinStatus(props.id);
     });
     return { togglePin, getPinStatus };
