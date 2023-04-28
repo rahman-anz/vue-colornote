@@ -38,7 +38,7 @@ export default {
     };
     const user = useUserStore();
     const mainColor = computed(() => {
-      if (user.theme === "green") return "#d1f2cb";
+      if (user.theme === "green") return "#e9ffe5";
       else return "#ffedcc";
     });
     return { login, mainColor };

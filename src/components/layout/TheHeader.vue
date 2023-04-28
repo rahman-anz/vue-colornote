@@ -5,10 +5,12 @@
       <ul>
         <div class="palette">
           <button
+            title="Light"
             @click="user.changeTheme('brown')"
             :class="brownActive"
           ></button>
           <button
+            title="Dark"
             @click="user.changeTheme('green')"
             :class="greenActive"
           ></button>
@@ -39,7 +41,7 @@ export default {
     });
 
     const color1 = computed(() => {
-      if (user.theme === "green") return "#6b8c65";
+      if (user.theme === "green") return "#7a9874";
       else return " #ccab71";
     });
     return { user, logout, color1, greenActive, brownActive };
@@ -63,12 +65,12 @@ export default {
 .palette {
   display: flex;
   background-color: #eee;
-  padding: 1rem;
+  padding: 1.1rem;
   gap: 1.3rem;
   border-radius: 30px;
 }
 .palette button {
-  padding: 1.2rem;
+  padding: 1rem;
   border-radius: 50%;
   border: none;
   cursor: pointer;

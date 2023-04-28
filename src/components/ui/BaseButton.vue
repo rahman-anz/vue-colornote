@@ -13,16 +13,16 @@ export default {
   setup() {
     const user = useUserStore();
     const color = computed(() => {
-      if (user.theme === "green") return "#8ebb87";
+      if (user.theme === "green") return "#79d067";
       else return " #fdba45";
     });
     const colorHover = computed(() => {
-      if (user.theme === "green") return "#7da476";
+      if (user.theme === "green") return "#66b655";
       else return " #edb24d";
     });
     const colorFlat = computed(() => {
       if (user.theme === "green") return "#c1eeba";
-      else return " #ffc869";
+      else return " #ffd791";
     });
     return { color, colorHover, colorFlat };
   },
@@ -30,7 +30,6 @@ export default {
 </script>
 <style scoped>
 button {
-  /* width: 3.5rem; */
   padding: 1.3rem 1.8rem;
   border: none;
   background-color: v-bind(color);
@@ -57,10 +56,10 @@ button:hover {
   border: v-bind(color) 2px solid;
   background-color: v-bind(colorFlat);
 }
-/* #ffb028 */
+
 .flat:hover {
   scale: none;
-  background-color: v-bind(colorFlat);
+  background-color: v-bind(color);
   border: v-bind(color) 2px solid;
 }
 </style>
