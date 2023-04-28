@@ -18,6 +18,7 @@ import { computed } from "vue";
 import CreateNote from "../components/notes/CreateNote.vue";
 import NoteItem from "../components/notes/NoteItem.vue";
 import { useNoteStore } from "../store/note.js";
+import { useUserStore } from "@/store/user";
 export default {
   components: { CreateNote, NoteItem },
   setup() {
@@ -34,19 +35,24 @@ export default {
         }
       });
     });
-    return { store, sortedNotes };
+    const user = useUserStore();
+    const mainColor = computed(() => {
+      if (user.theme === "green") return "#e0f7dd";
+      else return "#ffedcc";
+    });
+    return { store, sortedNotes, mainColor };
   },
 };
 </script>
 
 <style scoped>
 section {
-  background-color: #ffedcc;
+  background-color: v-bind(mainColor);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0rem 0.4rem;
-  overflow-y: scroll;
+  padding: 0rem 0.8rem;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
@@ -57,27 +63,5 @@ section {
   flex-direction: column;
   gap: 0.6rem;
   padding: 0;
-}
-
-/*SCROLLBAR*/
-
-/* width */
-::-webkit-scrollbar {
-  width: 1.2rem;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #e1bf84;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #907648;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #645232;
 }
 </style>

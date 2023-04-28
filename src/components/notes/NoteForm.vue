@@ -25,8 +25,9 @@
   >
 </template>
 <script>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useNoteStore } from "@/store/note";
+import { useUserStore } from "@/store/user";
 import { useRouter } from "vue-router";
 export default {
   setup() {
@@ -78,6 +79,21 @@ export default {
       router.push(`${id.value}`);
     };
 
+    const user = useUserStore();
+
+    const mainColor = computed(() => {
+      if (user.theme === "green") return "#baecb2";
+      else return " #ffd68d";
+    });
+    const inpColor = computed(() => {
+      if (user.theme === "green") return "#e8f9e5";
+      else return " #ffedcc";
+    });
+    const focusColor = computed(() => {
+      if (user.theme === "green") return "#7da476";
+      else return " #e5a537";
+    });
+
     return {
       title,
       desc,
@@ -87,13 +103,16 @@ export default {
       editNote,
       confirmEdits,
       invalidForm,
+      mainColor,
+      inpColor,
+      focusColor,
     };
   },
 };
 </script>
 <style scoped>
 form {
-  background-color: #ffd68d;
+  background-color: v-bind(mainColor);
   padding: 2rem 2rem;
   display: flex;
   flex-direction: column;
@@ -111,7 +130,7 @@ h2 {
 }
 .title,
 .desc {
-  background-color: #ffedcc;
+  background-color: v-bind(inpColor);
   border: none;
   border-radius: 9px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
@@ -121,8 +140,8 @@ h2 {
 }
 .title:focus,
 .desc:focus {
-  outline: #e5a537 3px solid;
-  border: #e5a537 1px solid;
+  outline: v-bind(focusColor) 3px solid;
+  border: v-bind(focusColor) 1px solid;
 }
 .desc {
   height: 40vh;

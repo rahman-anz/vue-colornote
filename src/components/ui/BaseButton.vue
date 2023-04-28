@@ -4,9 +4,27 @@
   </button>
 </template>
 <script>
+import { useUserStore } from "@/store/user.js";
+import { computed } from "vue";
 export default {
   props: {
     mode: { type: String, required: false, default: null },
+  },
+  setup() {
+    const user = useUserStore();
+    const color = computed(() => {
+      if (user.theme === "green") return "#8ebb87";
+      else return " #fdba45";
+    });
+    const colorHover = computed(() => {
+      if (user.theme === "green") return "#7da476";
+      else return " #edb24d";
+    });
+    const colorFlat = computed(() => {
+      if (user.theme === "green") return "#c1eeba";
+      else return " #ffc869";
+    });
+    return { color, colorHover, colorFlat };
   },
 };
 </script>
@@ -15,7 +33,7 @@ button {
   /* width: 3.5rem; */
   padding: 1.3rem 1.8rem;
   border: none;
-  background-color: #fdba45;
+  background-color: v-bind(color);
   font-size: 1.5rem;
   font-weight: 500;
   display: flex;
@@ -25,7 +43,7 @@ button {
 }
 button:hover {
   scale: 110%;
-  background-color: rgb(237, 178, 77);
+  background-color: v-bind(colorHover);
 }
 .circle {
   border-radius: 50%;
@@ -36,12 +54,13 @@ button:hover {
 }
 .flat {
   border-radius: 10px;
-  border: #ffb028 2px solid;
-  background-color: #ffd183;
+  border: v-bind(color) 2px solid;
+  background-color: v-bind(colorFlat);
 }
+/* #ffb028 */
 .flat:hover {
   scale: none;
-  background-color: #ffc869;
-  border: #ffb028 2px solid;
+  background-color: v-bind(colorFlat);
+  border: v-bind(color) 2px solid;
 }
 </style>

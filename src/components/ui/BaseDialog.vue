@@ -17,6 +17,8 @@
   </teleport>
 </template>
 <script>
+import { useUserStore } from "@/store/user";
+import { computed } from "vue";
 import BaseButton from "./BaseButton.vue";
 export default {
   emits: ["close"],
@@ -35,7 +37,18 @@ export default {
       }
       context.emit("close");
     };
-    return { tryClose };
+    const user = useUserStore();
+    const color1 = computed(() => {
+      if (user.theme === "green") return "#8ebb87";
+      else return " #ccab71";
+    });
+
+    const color2 = computed(() => {
+      if (user.theme === "green") return "#e0f7dd";
+      else return " #ffedcc";
+    });
+
+    return { tryClose, color1, color2 };
   },
 };
 </script>
@@ -61,10 +74,10 @@ dialog {
   border: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   overflow: hidden;
-  background-color: #ffedcc;
+  background-color: v-bind(color2);
 }
 header {
-  background-color: #ccab71;
+  background-color: v-bind(color1);
   display: flex;
   width: 100%;
   padding: 0.8rem;

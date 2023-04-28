@@ -59,7 +59,6 @@ export const useNoteStore = defineStore("note", {
         isPinned: isPinned,
       };
       this.notes.unshift(newNote);
-      console.log(this.notes);
     },
     editNote(id) {
       this.edits = this.noteById(id);

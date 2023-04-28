@@ -1,19 +1,17 @@
 import { defineStore } from "pinia";
-export default useUserStore = defineStore("user", {
-  state() {
-    return {
-      user: "django",
-    };
+export const useUserStore = defineStore("user", {
+  state: () => ({
+    user: "django",
+    theme: "brown",
+  }),
+  getters: {
+    getTheme: (state) => {
+      return state.theme;
+    },
   },
-  methods: {
-    async sendData() {
-      fetch(
-        "https://vue-colornote-app-default-rtdb.firebaseio.com/notes.json",
-        {
-          method: "PUT",
-          body: JSON.stringify(),
-        }
-      );
+  actions: {
+    changeTheme(color) {
+      this.theme = color;
     },
   },
 });

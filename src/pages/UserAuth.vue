@@ -26,6 +26,8 @@
 </template>
 <script>
 import { useRouter } from "vue-router";
+import { computed } from "vue";
+import { useUserStore } from "@/store/user";
 export default {
   setup() {
     // const mode = ref("login");
@@ -34,8 +36,12 @@ export default {
     const login = () => {
       router.replace("main/welcome");
     };
-
-    return { login };
+    const user = useUserStore();
+    const mainColor = computed(() => {
+      if (user.theme === "green") return "#d1f2cb";
+      else return "#ffedcc";
+    });
+    return { login, mainColor };
   },
 };
 </script>
@@ -48,7 +54,7 @@ section {
   gap: 2rem;
   align-items: center;
   justify-content: center;
-  background-color: #ffd58d84;
+  background-color: v-bind(mainColor);
 }
 form {
   margin-left: 4rem;

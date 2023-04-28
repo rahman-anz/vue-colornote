@@ -100,25 +100,4 @@ section p {
   margin-top: 3rem;
   line-height: 3.2rem;
 }
-/*SCROLLBAR*/
-
-/* width */
-::-webkit-scrollbar {
-  width: 1.2rem;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #e1bf84;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #907648;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #645232;
-}
 </style>

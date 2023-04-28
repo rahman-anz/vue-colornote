@@ -6,9 +6,18 @@
 </template>
 <script>
 import { PencilSquareIcon } from "@heroicons/vue/24/outline";
+import { useUserStore } from "@/store/user.js";
+import { computed } from "vue";
 export default {
   components: { PencilSquareIcon },
-  setup() {},
+  setup() {
+    const user = useUserStore();
+    const color1 = computed(() => {
+      if (user.theme === "green") return "#a0d398";
+      else return " #fbc669";
+    });
+    return { color1 };
+  },
 };
 </script>
 <style scoped>
@@ -18,7 +27,7 @@ export default {
   text-decoration: none;
   color: #333;
   width: 97%;
-  background-color: #fbc669;
+  background-color: v-bind(color1);
   border-radius: 1rem;
   display: flex;
   align-items: center;

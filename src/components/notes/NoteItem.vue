@@ -28,6 +28,7 @@ import { computed } from "vue";
 import { BookmarkIcon } from "@heroicons/vue/24/outline";
 import { BookmarkIcon as BookmarkSolid } from "@heroicons/vue/24/solid";
 import { useNoteStore } from "@/store/note";
+import { useUserStore } from "@/store/user";
 export default {
   components: { BookmarkIcon, BookmarkSolid },
   props: ["id", "title", "description"],
@@ -39,7 +40,20 @@ export default {
     const getPinStatus = computed(() => {
       return store.getPinStatus(props.id);
     });
-    return { togglePin, getPinStatus };
+    const user = useUserStore();
+    const mainColor = computed(() => {
+      if (user.theme === "green") return "#c1eeba";
+      else return " #ffda98";
+    });
+    const activeColor = computed(() => {
+      if (user.theme === "green") return "#b2eaa9";
+      else return " #ffc45da4";
+    });
+    const borderColor = computed(() => {
+      if (user.theme === "green") return "#b2eaa9";
+      else return " #ffbb46";
+    });
+    return { togglePin, getPinStatus, mainColor, activeColor, borderColor };
   },
 };
 </script>
@@ -49,7 +63,7 @@ li {
 }
 .note {
   height: 7.5rem;
-  background-color: #ffda98;
+  background-color: v-bind(mainColor);
   text-decoration: none;
   color: #333;
   padding: 0.5rem 1rem;
@@ -75,8 +89,8 @@ li {
   scale: 1.02;
 }
 .note.router-link-active {
-  background-color: #ffc45da4;
-  border: #ffbb46 1px solid;
+  background-color: v-bind(activeColor);
+  border: v-bind(borderColor) 1px solid;
 }
 .note:hover .unpinned,
 .icon-position:hover {

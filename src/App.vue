@@ -44,6 +44,6 @@ body {
   grid-template-rows: 10vh 1fr;
   grid-template-columns: 30vw 1fr;
   overflow: hidden;
-  background-color: #ffedcc;
+  
 }
 </style>
