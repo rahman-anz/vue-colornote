@@ -11,7 +11,7 @@
         v-model="desc"
       ></textarea>
     </div>
-    <p v-if="invalidForm" class="errorMsg">Please enter some input</p>
+    <p v-if="invalidForm" class="errorMsg">Please enter some input 😐</p>
     <base-button @click="submitNote" mode="curved">Save</base-button>
   </form>
   <base-dialog v-if="dialogVisible"
@@ -112,13 +112,14 @@ export default {
 </script>
 <style scoped>
 form {
+  position: relative;
   background-color: v-bind(mainColor);
   padding: 2rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 h2 {
   text-align: center;
@@ -136,7 +137,7 @@ h2 {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   padding: 1rem;
   width: 50vw;
-  white-space: pre;
+  white-space: pre-wrap;
 }
 .title:focus,
 .desc:focus {
@@ -145,8 +146,11 @@ h2 {
 }
 .desc {
   height: 40vh;
+  margin-bottom: 3.5rem;
 }
 .errorMsg {
+  position: absolute;
+  bottom: 14%;
   font-size: 1.8rem;
   color: red;
   margin-bottom: 1rem;

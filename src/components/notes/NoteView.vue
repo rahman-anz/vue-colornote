@@ -1,13 +1,22 @@
 <template>
   <note-outline v-if="selectedNote">
     <h2>{{ selectedNote.title }}</h2>
-    <p>
+    <p class="desc">
       {{ selectedNote.description }}
     </p>
-    <base-button @click="editNote" mode="circle" class="icon-position1"
+    <base-button
+      @click="editNote"
+      title="Edit"
+      mode="circle"
+      class="icon-position1"
       ><PencilIcon class="icon-edit"
     /></base-button>
-    <base-button @click="openDialog" mode="circle" class="icon-position2">
+    <base-button
+      @click="openDialog"
+      title="Delete"
+      mode="circle"
+      class="icon-position2"
+    >
       <TrashIcon class="icon-edit" />
     </base-button>
   </note-outline>
@@ -93,11 +102,11 @@ section h2 {
 .icon-edit {
   width: 2.6rem;
 }
-
 section p {
   font-size: 1.9rem;
   margin: 0 2rem;
   margin-top: 3rem;
+  white-space: pre-wrap;
   line-height: 3.2rem;
 }
 </style>

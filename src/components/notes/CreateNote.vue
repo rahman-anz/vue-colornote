@@ -22,7 +22,7 @@ export default {
 </script>
 <style scoped>
 .create-note {
-  height: 7rem;
+  min-height: 7rem;
   margin: 1rem;
   text-decoration: none;
   color: #333;

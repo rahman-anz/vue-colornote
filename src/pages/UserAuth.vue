@@ -41,7 +41,11 @@ export default {
       if (user.theme === "green") return "#e9ffe5";
       else return "#ffedcc";
     });
-    return { login, mainColor };
+    const inpColor = computed(() => {
+      if (user.theme === "green") return "#5ea751";
+      else return "#e5a537";
+    });
+    return { login, mainColor, inpColor };
   },
 };
 </script>
@@ -100,7 +104,7 @@ input {
   height: 2.2rem;
 }
 input:focus {
-  outline: #e5a537 2px solid;
-  border: #e5a537 1px solid;
+  outline: v-bind(inpColor) 2px solid;
+  border: v-bind(inpColor) 1px solid;
 }
 </style>

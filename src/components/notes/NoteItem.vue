@@ -8,6 +8,7 @@
       <base-button
         v-if="getPinStatus"
         @click="togglePin"
+        title="unpin"
         class="icon-position pinned"
         mode="circle"
         ><BookmarkSolid class="icon"
@@ -15,6 +16,7 @@
       <base-button
         v-else
         @click="togglePin"
+        title="pin"
         mode="circle"
         class="icon-position unpinned"
       >
@@ -62,7 +64,7 @@ li {
   position: relative;
 }
 .note {
-  height: 7.5rem;
+  min-height: 7.5rem;
   background-color: v-bind(mainColor);
   text-decoration: none;
   color: #333;
@@ -70,7 +72,7 @@ li {
   border-radius: 0.9rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.6rem;
 
   overflow: hidden;
 }
