@@ -12,7 +12,7 @@ export default {
       else return "#ffd68d";
     });
     const secColor = computed(() => {
-      if (user.theme === "green") return "#8ebb87";
+      if (user.theme === "green") return "#a2cc9c";
       else return "#f6ba52";
     });
     return { mainColor, secColor };

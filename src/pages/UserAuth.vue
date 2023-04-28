@@ -30,13 +30,13 @@ import { computed } from "vue";
 import { useUserStore } from "@/store/user";
 export default {
   setup() {
-    // const mode = ref("login");
-
+    const user = useUserStore();
     const router = useRouter();
     const login = () => {
+      user.toggleAuth();
       router.replace("main/welcome");
     };
-    const user = useUserStore();
+
     const mainColor = computed(() => {
       if (user.theme === "green") return "#e9ffe5";
       else return "#ffedcc";

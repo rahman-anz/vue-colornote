@@ -7,44 +7,71 @@
           <button
             title="Light"
             @click="user.changeTheme('brown')"
-            :class="brownActive"
+            :class="['brown', { active: brownActive }]"
           ></button>
           <button
             title="Dark"
             @click="user.changeTheme('green')"
-            :class="greenActive"
+            :class="['green', { active: greenActive }]"
           ></button>
         </div>
-        <base-button @click="logout" mode="curved">Logout</base-button>
+        <base-button v-if="user.loggedIn" @click="logoutDialog" mode="curved"
+          >Logout</base-button
+        >
       </ul>
     </nav>
+    <base-dialog v-if="dialogVisible"
+      ><template #default>Are you sure you want to log out ?</template
+      ><template #actions
+        ><base-button mode="flat" @click="confirmedLogout">Yes</base-button
+        ><base-button mode="flat" @click="closeDialog"
+          >No</base-button
+        ></template
+      ></base-dialog
+    >
   </header>
 </template>
 <script>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/store/user";
 export default {
   setup() {
-    const router = useRouter();
-    const logout = () => {
-      router.replace("/auth");
-    };
     const user = useUserStore();
+    const router = useRouter();
+    const dialogVisible = ref(false);
+    const logoutDialog = () => {
+      dialogVisible.value = true;
+    };
+    const confirmedLogout = () => {
+      user.toggleAuth();
+      router.replace("/auth");
+      closeDialog();
+    };
+    const closeDialog = () => (dialogVisible.value = false);
+
     const greenActive = computed(() => {
-      if (user.theme === "green") return "active green";
-      else return "green";
+      if (user.theme === "green") return true;
+      else return false;
     });
     const brownActive = computed(() => {
-      if (user.theme !== "green") return "active brown";
-      else return "brown";
+      if (user.theme !== "green") return true;
+      else return false;
     });
-
     const color1 = computed(() => {
       if (user.theme === "green") return "#7a9874";
       else return " #ccab71";
     });
-    return { user, logout, color1, greenActive, brownActive };
+    return {
+      user,
+      dialogVisible,
+      logoutDialog,
+      confirmedLogout,
+      closeDialog,
+      color1,
+      greenActive,
+      brownActive,
+    };
   },
 };
 </script>
@@ -79,7 +106,7 @@ export default {
   background-color: burlywood;
 }
 .green {
-  background-color: green;
+  background-color: rgb(95, 198, 95);
 }
 .active {
   outline: #444 7px solid;
