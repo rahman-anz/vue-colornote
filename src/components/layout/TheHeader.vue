@@ -7,7 +7,7 @@
           <button
             title="Light"
             @click="user.changeTheme('brown')"
-            :class="['brown', { active: brownActive }]"
+            :class="['brown', { active: !greenActive }]"
           ></button>
           <button
             title="Dark"
@@ -54,13 +54,14 @@ export default {
       if (user.theme === "green") return true;
       else return false;
     });
-    const brownActive = computed(() => {
-      if (user.theme !== "green") return true;
-      else return false;
-    });
+
     const color1 = computed(() => {
       if (user.theme === "green") return "#7a9874";
       else return " #ccab71";
+    });
+    const colorLogo = computed(() => {
+      if (user.theme === "green") return "#f8fdf7";
+      else return "#333";
     });
     return {
       user,
@@ -70,7 +71,7 @@ export default {
       closeDialog,
       color1,
       greenActive,
-      brownActive,
+      colorLogo,
     };
   },
 };
@@ -86,6 +87,7 @@ export default {
 }
 .logo {
   font-family: "Lobster";
+  color: v-bind(colorLogo);
   font-size: 4rem;
   letter-spacing: 3px;
 }

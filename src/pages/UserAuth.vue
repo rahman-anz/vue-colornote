@@ -96,12 +96,13 @@ input {
   align-items: flex-start;
 }
 label {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   margin-bottom: 0.3rem;
 }
 input {
-  width: 20rem;
-  height: 2.2rem;
+  width: 22rem;
+  height: 2.4rem;
+  border: v-bind(inpColor) 0.1px solid;
 }
 input:focus {
   outline: v-bind(inpColor) 2px solid;
