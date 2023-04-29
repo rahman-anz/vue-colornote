@@ -91,14 +91,14 @@ section h2 {
 }
 
 .icon-position1 {
-  position: absolute;
+  position: fixed;
   bottom: 10rem;
-  right: 14rem;
+  right: 18rem;
 }
 .icon-position2 {
-  position: absolute;
+  position: fixed;
   bottom: 10rem;
-  right: 8rem;
+  right: 12rem;
 }
 .icon-edit {
   width: 2.6rem;

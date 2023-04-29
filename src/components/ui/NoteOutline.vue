@@ -30,5 +30,7 @@ section {
   );
   padding: 1rem 2rem;
   position: relative;
+  /* background-size: contain; */
+  overflow: auto;
 }
 </style>

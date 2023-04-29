@@ -40,7 +40,8 @@ button {
   justify-content: center;
   cursor: pointer;
 }
-button:hover {
+button:hover,
+button:active {
   scale: 110%;
   background-color: v-bind(colorHover);
 }
