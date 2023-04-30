@@ -3,7 +3,7 @@
     <router-link :to="id" class="note">
       <h3 class="note-title">{{ title }}</h3>
       <p class="note-description">
-        {{ description.slice(0, 110) }}
+        {{ description.slice(0, 120) + "...." }}
       </p>
       <base-button
         v-if="getPinStatus"
