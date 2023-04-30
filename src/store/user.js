@@ -13,9 +13,17 @@ export const useUserStore = defineStore("user", {
   actions: {
     changeTheme(color) {
       this.theme = color;
+      this.setLocal();
     },
     toggleAuth() {
       this.loggedIn = !this.loggedIn;
+    },
+    setLocal() {
+      localStorage.setItem("theme", this.theme);
+    },
+    getLocal() {
+      const oldTheme = localStorage.getItem("theme");
+      this.theme = oldTheme;
     },
   },
 });

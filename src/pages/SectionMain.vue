@@ -23,6 +23,7 @@ export default {
   components: { CreateNote, NoteItem },
   setup() {
     const store = useNoteStore();
+    store.getLocal();
     const notes = store.getNotes;
     const sortedNotes = computed(() => {
       return notes.slice().sort((a, b) => {
@@ -36,6 +37,7 @@ export default {
       });
     });
     const user = useUserStore();
+    user.getLocal();
     const mainColor = computed(() => {
       if (user.theme === "green") return "#e9ffe5";
       else return "#ffedcc";

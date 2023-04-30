@@ -10,21 +10,14 @@ export const useNoteStore = defineStore("note", {
         isPinned: false,
       },
       {
-        id: "c2",
+        id: "c3",
         title: "Movies WatchList",
         description:
-          "Antman Quantumania, Thaapad, Ruby Sparks, Before Sunrise, Agro,  Athena, Into the wild, Uncut gems, Women King, Banshees of Insherin ",
+          "Quantumania, Thaapad, Ruby Sparks, Before Sunrise, Agro,  Athena, Uncut gems, Women King, Banshees of Insherin ",
         isPinned: false,
       },
       {
-        id: "c3",
-        title: "Freddy Mercury",
-        description:
-          "architecto possimus molestias. Odit sit est pariatur obcaecati. Dicta",
-        isPinned: false,
-      },
-      {
-        id: "c4",
+        id: "c2",
         title: "Serenity Prayer",
         description:
           "God grant me the serenity to accept the things I cannot change, courage to change the things I can, and the wisdom to know the difference. Living one day at a time, enjoying one moment at a time, taking this world as it is and not as I would have it.",
@@ -59,6 +52,7 @@ export const useNoteStore = defineStore("note", {
         isPinned: isPinned,
       };
       this.notes.unshift(newNote);
+      this.setLocal(this.notes);
     },
     editNote(id) {
       this.edits = this.noteById(id);
@@ -69,14 +63,25 @@ export const useNoteStore = defineStore("note", {
     removeNote(id) {
       const selectedNoteIndex = this.notes.findIndex((note) => note.id === id);
       this.notes.splice(selectedNoteIndex, 1);
+      this.setLocal();
     },
     togglePin(id) {
       const selectedNote = this.noteById(id);
       selectedNote.isPinned = !selectedNote.isPinned;
+      this.setLocal();
     },
     getPinStatus(id) {
       const selectedNote = this.noteById(id);
       return selectedNote.isPinned;
+    },
+    setLocal(newNotes = this.notes) {
+      localStorage.setItem("notes", JSON.stringify(newNotes));
+    },
+    getLocal() {
+      if (localStorage.notes) {
+        const oldNotes = localStorage.getItem("notes");
+        this.notes = JSON.parse(oldNotes);
+      } else return;
     },
   },
 });
