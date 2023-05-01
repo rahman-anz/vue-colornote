@@ -15,6 +15,7 @@
             :class="['green', { active: greenActive }]"
           ></button>
         </div>
+
         <base-button v-if="user.loggedIn" @click="logoutDialog" mode="curved"
           >Logout</base-button
         >

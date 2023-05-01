@@ -2,13 +2,15 @@
   <section>
     <create-note></create-note>
     <ul class="notes" v-if="store.hasNotes">
-      <note-item
-        v-for="note in sortedNotes"
-        :key="note.id"
-        :id="note.id"
-        :title="note.title"
-        :description="note.description"
-      ></note-item>
+      <transition-group name="note">
+        <note-item
+          v-for="note in sortedNotes"
+          :key="note.id"
+          :id="note.id"
+          :title="note.title"
+          :description="note.description"
+        ></note-item>
+      </transition-group>
     </ul>
   </section>
   <router-view></router-view>
@@ -65,5 +67,28 @@ section {
   flex-direction: column;
   gap: 0.6rem;
   padding: 0;
+}
+.note-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+.note-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.note-enter-active {
+  transition: all 0.3s ease-out;
+}
+.note-leave-active {
+  transition: all 0.3s ease-in;
+  position: absolute;
+}
+.note-enter-to,
+.note-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+.note-move {
+  transition: transform 0.6s ease;
 }
 </style>

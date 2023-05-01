@@ -1,19 +1,21 @@
 <template>
   <teleport to="body">
-    <div class="backdrop" @click="tryClose"></div>
-    <dialog open>
-      <header v-if="!fixed">
-        <h2><slot name="header">Alert</slot></h2>
-      </header>
-      <section>
-        <p><slot></slot></p>
-      </section>
-      <menu v-if="!fixed"
-        ><slot name="actions">
-          <base-button mode="flat" @click="tryClose">Okay</base-button></slot
-        ></menu
-      >
-    </dialog>
+    <div class="backdrop" @click="tryClose" v-if="show"></div>
+    <transition name="dialog" :class="color2">
+      <dialog open v-if="show">
+        <header v-if="!fixed" :class="color1">
+          <h2><slot name="header">Alert</slot></h2>
+        </header>
+        <section>
+          <p><slot></slot></p>
+        </section>
+        <menu v-if="!fixed"
+          ><slot name="actions">
+            <base-button mode="flat" @click="tryClose">Okay</base-button></slot
+          ></menu
+        >
+      </dialog>
+    </transition>
   </teleport>
 </template>
 <script>
@@ -29,6 +31,10 @@ export default {
       required: false,
       default: false,
     },
+    show: {
+      type: Boolean,
+      required: true,
+    },
   },
   setup(props, context) {
     const tryClose = () => {
@@ -39,13 +45,13 @@ export default {
     };
     const user = useUserStore();
     const color1 = computed(() => {
-      if (user.theme === "green") return "#8ebb87";
-      else return " #ccab71";
+      if (user.theme === "green") return "green-header";
+      else return "brown-header";
     });
 
     const color2 = computed(() => {
-      if (user.theme === "green") return "#e0f7dd";
-      else return " #ffedcc";
+      if (user.theme === "green") return "green-dialog";
+      else return "brown-dialog ";
     });
 
     return { tryClose, color1, color2 };
@@ -76,6 +82,28 @@ dialog {
   overflow: hidden;
   background-color: v-bind(color2);
 }
+.green-dialog {
+  background-color: #e0f7dd;
+}
+.brown-dialog {
+  background-color: #ffedcc;
+}
+.dialog-enter-from,
+.dialog-leave-to {
+  opacity: 0;
+  scale: 0.8;
+}
+.dialog-enter-active {
+  transition: all 0.3s ease-out;
+}
+.dialog-leave-active {
+  transition: all 0.3s ease-in;
+}
+.dialog-enter-to,
+.dialog-leave-from {
+  opacity: 1;
+  scale: 1;
+}
 header {
   background-color: v-bind(color1);
   display: flex;
@@ -84,6 +112,12 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.green-header {
+  background-color: #8ebb87;
+}
+.brown-header {
+  background-color: #ccab71;
 }
 header h2 {
   font-size: 2.5rem;
