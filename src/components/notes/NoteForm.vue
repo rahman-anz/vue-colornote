@@ -14,7 +14,7 @@
     <p v-if="invalidForm" class="errorMsg">Please enter some input 😐</p>
     <base-button @click="submitNote" mode="curved">Save</base-button>
   </form>
-  <base-dialog v-if="dialogVisible"
+  <base-dialog :show="dialogVisible"
     ><template #default
       >Are you sure about making the changes to the existing note ?</template
     >

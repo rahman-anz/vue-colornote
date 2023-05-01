@@ -21,7 +21,7 @@
     </base-button>
   </note-outline>
   <div v-else>{{ this.$router.replace("welcome") }}</div>
-  <base-dialog v-if="dialogVisible" @close="closeDialog"
+  <base-dialog :show="dialogVisible" @close="closeDialog"
     ><template #default
       >Are you sure you want to delete the selected note ?</template
     >
