@@ -25,39 +25,35 @@
     </router-link>
   </li>
 </template>
-<script>
-import { computed } from "vue";
+<script setup>
+import { defineProps, defineExpose, computed } from "vue";
 import { BookmarkIcon } from "@heroicons/vue/24/outline";
 import { BookmarkIcon as BookmarkSolid } from "@heroicons/vue/24/solid";
 import { useNoteStore } from "@/store/note";
 import { useUserStore } from "@/store/user";
-export default {
-  components: { BookmarkIcon, BookmarkSolid },
-  props: ["id", "title", "description"],
-  setup(props) {
-    const store = useNoteStore();
-    const togglePin = () => {
-      store.togglePin(props.id);
-    };
-    const getPinStatus = computed(() => {
-      return store.getPinStatus(props.id);
-    });
-    const user = useUserStore();
-    const mainColor = computed(() => {
-      if (user.theme === "green") return "#c1eeba";
-      else return " #ffda98";
-    });
-    const activeColor = computed(() => {
-      if (user.theme === "green") return "#b2eaa9";
-      else return " #ffc45da4";
-    });
-    const borderColor = computed(() => {
-      if (user.theme === "green") return "#b2eaa9";
-      else return " #ffbb46";
-    });
-    return { togglePin, getPinStatus, mainColor, activeColor, borderColor };
-  },
+
+const props = defineProps({ id: String, title: String, description: String });
+const store = useNoteStore();
+const togglePin = () => {
+  store.togglePin(props.id);
 };
+const getPinStatus = computed(() => {
+  return store.getPinStatus(props.id);
+});
+const user = useUserStore();
+const mainColor = computed(() => {
+  if (user.theme === "green") return "#c1eeba";
+  else return " #ffda98";
+});
+const activeColor = computed(() => {
+  if (user.theme === "green") return "#b2eaa9";
+  else return " #ffc45da4";
+});
+const borderColor = computed(() => {
+  if (user.theme === "green") return "#b2eaa9";
+  else return " #ffbb46";
+});
+defineExpose({ togglePin, getPinStatus, mainColor, activeColor, borderColor });
 </script>
 <style scoped>
 li {

@@ -3,7 +3,7 @@ export const useNoteStore = defineStore("note", {
   state: () => ({
     notes: [
       {
-        id: "c1",
+        id: "c3",
         title: "The Name's Bond",
         description:
           "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur iur Lorem ipsum dolor sit, amet consectetur adip",
@@ -17,6 +17,7 @@ export const useNoteStore = defineStore("note", {
         isPinned: false,
       },
       {
+<<<<<<< Updated upstream
         id: "c3",
         title: "Freddy Mercury",
         description:
@@ -25,6 +26,9 @@ export const useNoteStore = defineStore("note", {
       },
       {
         id: "c4",
+=======
+        id: "c1",
+>>>>>>> Stashed changes
         title: "Serenity Prayer",
         description:
           "God grant me the serenity to accept the things I cannot change, courage to change the things I can, and the wisdom to know the difference. Living one day at a time, enjoying one moment at a time, taking this world as it is and not as I would have it.",

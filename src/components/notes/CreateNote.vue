@@ -4,21 +4,17 @@
     <span class="create-note-text">Create Note</span>
   </router-link>
 </template>
-<script>
+<script setup>
 import { PencilSquareIcon } from "@heroicons/vue/24/outline";
 import { useUserStore } from "@/store/user.js";
-import { computed } from "vue";
-export default {
-  components: { PencilSquareIcon },
-  setup() {
-    const user = useUserStore();
-    const color1 = computed(() => {
-      if (user.theme === "green") return "#a0d398";
-      else return " #fbc669";
-    });
-    return { color1 };
-  },
-};
+import { defineExpose, computed } from "vue";
+
+const user = useUserStore();
+const color1 = computed(() => {
+  if (user.theme === "green") return "#a0d398";
+  else return " #fbc669";
+});
+defineExpose({ color1 });
 </script>
 <style scoped>
 .create-note {

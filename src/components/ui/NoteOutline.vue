@@ -1,24 +1,22 @@
 <template>
   <section><slot></slot></section>
 </template>
-<script>
+<script setup>
 import { useUserStore } from "@/store/user";
-import { computed } from "vue";
-export default {
-  setup() {
-    const user = useUserStore();
-    const mainColor = computed(() => {
-      if (user.theme === "green") return "#baecb2";
-      else return "#ffd68d";
-    });
-    const secColor = computed(() => {
-      if (user.theme === "green") return "#a2cc9c";
-      else return "#f6ba52";
-    });
-    return { mainColor, secColor };
-  },
-};
+import { defineExpose, computed } from "vue";
+
+const user = useUserStore();
+const mainColor = computed(() => {
+  if (user.theme === "green") return "#baecb2";
+  else return "#ffd68d";
+});
+const secColor = computed(() => {
+  if (user.theme === "green") return "#a2cc9c";
+  else return "#f6ba52";
+});
+defineExpose({ mainColor, secColor });
 </script>
+
 <style scoped>
 section {
   background: repeating-linear-gradient(

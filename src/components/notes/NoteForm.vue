@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="addNote">
+  <form @submit.prevent="submitNote">
     <h2>Start Creating Notes</h2>
     <div class="form-control">
       <input placeholder="Title" class="title" type="text" v-model="title" />
@@ -12,103 +12,91 @@
       ></textarea>
     </div>
     <p v-if="invalidForm" class="errorMsg">Please enter some input 😐</p>
-    <base-button @click="submitNote" mode="curved">Save</base-button>
+    <base-button mode="curved">Save</base-button>
   </form>
-  <base-dialog :show="dialogVisible"
+  <base-dialog :show="dialogVisible" @close="closeDialog"
     ><template #default
       >Are you sure about making the changes to the existing note ?</template
     >
     <template #actions
-      ><base-button @click="confirmEdits" mode="flat">Yes</base-button
-      ><base-button @click="closeDialog" mode="flat">No</base-button></template
+      ><base-button mode="flat" @click="confirmEdits">Yes</base-button
+      ><base-button mode="flat" @click="closeDialog">No</base-button></template
     ></base-dialog
   >
 </template>
-<script>
-import { ref, computed } from "vue";
+<script setup>
+import { defineExpose, ref, computed } from "vue";
 import { useNoteStore } from "@/store/note";
 import { useUserStore } from "@/store/user";
 import { useRouter } from "vue-router";
-export default {
-  setup() {
-    const store = useNoteStore();
-    const router = useRouter();
-    const id = ref("");
-    const title = ref("");
-    const desc = ref("");
-    const isPinned = ref(false);
-
-    const editNote = () => {
-      if (store.edits === "") return;
-      else {
-        id.value = store.edits.id;
-        title.value = store.edits.title;
-        desc.value = store.edits.description;
-        isPinned.value = store.edits.isPinned;
-        store.clearEdits();
-      }
-    };
-    editNote();
-    const dialogVisible = ref(false);
-    const closeDialog = () => {
-      dialogVisible.value = false;
-    };
-    const submitNote = () => {
-      validateForm();
-      if (invalidForm.value) return;
-      if (id.value) {
-        dialogVisible.value = true;
-        return;
-      }
-      addNote();
-    };
-    const invalidForm = ref(false);
-    const validateForm = () => {
-      invalidForm.value = false;
-      if (title.value === "" || desc.value === "") {
-        invalidForm.value = true;
-      }
-    };
-    const confirmEdits = () => {
-      dialogVisible.value = false;
-      addNote();
-    };
-    const addNote = () => {
-      id.value = id.value ? id.value : new Date().toISOString();
-      store.addNote(id.value, title.value, desc.value, isPinned.value);
-      router.push(`${id.value}`);
-    };
-
-    const user = useUserStore();
-
-    const mainColor = computed(() => {
-      if (user.theme === "green") return "#baecb2";
-      else return " #ffd68d";
-    });
-    const inpColor = computed(() => {
-      if (user.theme === "green") return "#e8f9e5";
-      else return " #ffedcc";
-    });
-    const focusColor = computed(() => {
-      if (user.theme === "green") return "#7da476";
-      else return " #e5a537";
-    });
-
-    return {
-      title,
-      desc,
-      dialogVisible,
-      closeDialog,
-      submitNote,
-      editNote,
-      confirmEdits,
-      invalidForm,
-      mainColor,
-      inpColor,
-      focusColor,
-    };
-  },
+const store = useNoteStore();
+const router = useRouter();
+const id = ref("");
+const title = ref("");
+const desc = ref("");
+const isPinned = ref(false);
+const editNote = () => {
+  if (store.edits === "") return;
+  else {
+    id.value = store.edits.id;
+    title.value = store.edits.title;
+    desc.value = store.edits.description;
+    isPinned.value = store.edits.isPinned;
+    store.clearEdits();
+  }
 };
+editNote();
+const dialogVisible = ref(false);
+const closeDialog = () => {
+  dialogVisible.value = false;
+};
+const submitNote = () => {
+  validateForm();
+  if (invalidForm.value) return;
+  if (id.value) {
+    dialogVisible.value = true;
+    return;
+  }
+  addNote();
+};
+const invalidForm = ref(false);
+const validateForm = () => {
+  invalidForm.value = false;
+  if (title.value === "" || desc.value === "") {
+    invalidForm.value = true;
+  }
+};
+const confirmEdits = () => {
+  dialogVisible.value = false;
+  addNote();
+};
+const addNote = () => {
+  id.value = id.value ? id.value : new Date().toISOString();
+  store.addNote(id.value, title.value, desc.value, isPinned.value);
+  router.push(`${id.value}`);
+};
+const user = useUserStore();
+const mainColor = computed(() => {
+  if (user.theme === "green") return "#baecb2";
+  else return " #ffd68d";
+});
+const inpColor = computed(() => {
+  if (user.theme === "green") return "#e8f9e5";
+  else return " #ffedcc";
+});
+const focusColor = computed(() => {
+  if (user.theme === "green") return "#7da476";
+  else return " #e5a537";
+});
+defineExpose({
+  closeDialog,
+  submitNote,
+  editNote,
+  confirmEdits,
+  mainColor,
+  inpColor,
+  focusColor,
+});
 </script>
 <style scoped>
 form {

@@ -15,12 +15,13 @@
   </section>
   <router-view></router-view>
 </template>
-<script>
-import { computed } from "vue";
+<script setup>
+import { defineExpose, computed } from "vue";
 import CreateNote from "../components/notes/CreateNote.vue";
 import NoteItem from "../components/notes/NoteItem.vue";
 import { useNoteStore } from "../store/note.js";
 import { useUserStore } from "@/store/user";
+<<<<<<< Updated upstream
 export default {
   components: { CreateNote, NoteItem },
   setup() {
@@ -45,6 +46,29 @@ export default {
     return { store, sortedNotes, mainColor };
   },
 };
+=======
+const store = useNoteStore();
+store.getLocal();
+const notes = store.getNotes;
+const sortedNotes = computed(() => {
+  return notes.slice().sort((a, b) => {
+    if (a.isPinned === true && b.isPinned === false) {
+      return -1;
+    } else if (a.isPinned === false && b.isPinned === true) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+});
+const user = useUserStore();
+user.getLocal();
+const mainColor = computed(() => {
+  if (user.theme === "green") return "#e9ffe5";
+  else return "#ffedcc";
+});
+defineExpose({ store, sortedNotes, mainColor });
+>>>>>>> Stashed changes
 </script>
 
 <style scoped>

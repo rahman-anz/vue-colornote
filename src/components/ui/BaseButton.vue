@@ -3,30 +3,33 @@
     <slot></slot>
   </button>
 </template>
-<script>
+<script setup>
 import { useUserStore } from "@/store/user.js";
-import { computed } from "vue";
-export default {
-  props: {
-    mode: { type: String, required: false, default: null },
+import { defineProps, defineExpose, computed } from "vue";
+
+defineProps({
+  mode: {
+    type: String,
+    required: false,
+    default: null,
   },
-  setup() {
-    const user = useUserStore();
-    const color = computed(() => {
-      if (user.theme === "green") return "#79d067";
-      else return " #fdba45";
-    });
-    const colorHover = computed(() => {
-      if (user.theme === "green") return "#66b655";
-      else return " #edb24d";
-    });
-    const colorFlat = computed(() => {
-      if (user.theme === "green") return "#c1eeba";
-      else return " #ffd791";
-    });
-    return { color, colorHover, colorFlat };
-  },
-};
+});
+const user = useUserStore();
+const color = computed(() => {
+  if (user.theme === "green") return "#79d067";
+  else return " #fdba45";
+});
+const colorHover = computed(() => {
+  if (user.theme === "green") return "#66b655";
+  else return " #edb24d";
+});
+const colorFlat = computed(() => {
+  if (user.theme === "green") return "#c1eeba";
+  else return " #ffd791";
+});
+
+defineExpose({ color, colorHover, colorFlat });
+
 </script>
 <style scoped>
 button {
