@@ -3,21 +3,21 @@ export const useNoteStore = defineStore("note", {
   state: () => ({
     notes: [
       {
-        id: "c1",
+        id: "c3",
         title: "The Name's Bond",
         description:
           "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores iur iur Lorem ipsum dolor sit, amet consectetur adip",
         isPinned: false,
       },
       {
-        id: "c3",
+        id: "c2",
         title: "Movies WatchList",
         description:
           "Quantumania, Thaapad, Ruby Sparks, Before Sunrise, Agro,  Athena, Uncut gems, Women King, Banshees of Insherin ",
         isPinned: false,
       },
       {
-        id: "c2",
+        id: "c1",
         title: "Serenity Prayer",
         description:
           "God grant me the serenity to accept the things I cannot change, courage to change the things I can, and the wisdom to know the difference. Living one day at a time, enjoying one moment at a time, taking this world as it is and not as I would have it.",

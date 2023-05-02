@@ -24,30 +24,26 @@
     </div>
   </section>
 </template>
-<script>
+<script setup>
 import { useRouter } from "vue-router";
-import { computed } from "vue";
+import { defineExpose, computed } from "vue";
 import { useUserStore } from "@/store/user";
-export default {
-  setup() {
-    const user = useUserStore();
-    const router = useRouter();
-    const login = () => {
-      user.toggleAuth();
-      router.replace("main/welcome");
-    };
-
-    const mainColor = computed(() => {
-      if (user.theme === "green") return "#e9ffe5";
-      else return "#ffedcc";
-    });
-    const inpColor = computed(() => {
-      if (user.theme === "green") return "#5ea751";
-      else return "#e5a537";
-    });
-    return { login, mainColor, inpColor };
-  },
+const user = useUserStore();
+const router = useRouter();
+const login = () => {
+  user.toggleAuth();
+  router.replace("main/welcome");
 };
+
+const mainColor = computed(() => {
+  if (user.theme === "green") return "#e9ffe5";
+  else return "#ffedcc";
+});
+const inpColor = computed(() => {
+  if (user.theme === "green") return "#5ea751";
+  else return "#e5a537";
+});
+defineExpose({ login, mainColor, inpColor });
 </script>
 <style scoped>
 section {

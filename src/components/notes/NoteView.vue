@@ -32,55 +32,49 @@
   >
 </template>
 
-<script>
+<script setup>
 import { TrashIcon, PencilIcon } from "@heroicons/vue/24/outline";
 import { useNoteStore } from "@/store/note";
-import { ref, computed } from "vue";
+import { defineExpose, defineProps, ref, computed } from "vue";
 import { useRouter } from "vue-router";
 
-export default {
-  props: ["id"],
-  components: { TrashIcon, PencilIcon },
-  setup(props) {
-    const store = useNoteStore();
-    const router = useRouter();
+const props = defineProps({ id: String });
+const store = useNoteStore();
+const router = useRouter();
 
-    const selectedNote = computed(() => {
-      if (props.id) {
-        return store.noteById(props.id);
-      } else {
-        return false;
-      }
-    });
-    const editNote = () => {
-      store.editNote(props.id);
-      router.push("create");
-    };
-
-    const dialogVisible = ref(false);
-    const openDialog = () => {
-      dialogVisible.value = true;
-    };
-    const closeDialog = () => {
-      dialogVisible.value = false;
-    };
-
-    const confirmDeletion = () => {
-      store.removeNote(props.id);
-      router.replace("welcome");
-      closeDialog();
-    };
-
-    return {
-      selectedNote,
-      editNote,
-      dialogVisible,
-      openDialog,
-      closeDialog,
-      confirmDeletion,
-    };
-  },
+const selectedNote = computed(() => {
+  if (props.id) {
+    return store.noteById(props.id);
+  } else {
+    return false;
+  }
+});
+const editNote = () => {
+  store.editNote(props.id);
+  router.push("create");
 };
+
+const dialogVisible = ref(false);
+const openDialog = () => {
+  dialogVisible.value = true;
+};
+const closeDialog = () => {
+  dialogVisible.value = false;
+};
+
+const confirmDeletion = () => {
+  store.removeNote(props.id);
+  router.replace("welcome");
+  closeDialog();
+};
+
+defineExpose({
+  selectedNote,
+  editNote,
+  openDialog,
+  closeDialog,
+  confirmDeletion,
+});
 </script>
 <style scoped>
 section h2 {

@@ -32,50 +32,48 @@
     >
   </header>
 </template>
-<script>
-import { computed, ref } from "vue";
-import { useRouter } from "vue-router";
+<script setup>
+import { defineExpose, computed, ref } from "vue";
+
 import { useUserStore } from "@/store/user";
-export default {
-  setup() {
-    const user = useUserStore();
-    const router = useRouter();
-    const dialogVisible = ref(false);
-    const logoutDialog = () => {
-      dialogVisible.value = true;
-    };
-    const confirmedLogout = () => {
-      user.toggleAuth();
-      router.replace("/auth");
-      closeDialog();
-    };
-    const closeDialog = () => (dialogVisible.value = false);
+const user = useUserStore();
 
-    const greenActive = computed(() => {
-      if (user.theme === "green") return true;
-      else return false;
-    });
+import { useRouter } from "vue-router";
+const router = useRouter();
 
-    const color1 = computed(() => {
-      if (user.theme === "green") return "#7a9874";
-      else return " #ccab71";
-    });
-    const colorLogo = computed(() => {
-      if (user.theme === "green") return "#f8fdf7";
-      else return "#333";
-    });
-    return {
-      user,
-      dialogVisible,
-      logoutDialog,
-      confirmedLogout,
-      closeDialog,
-      color1,
-      greenActive,
-      colorLogo,
-    };
-  },
+const dialogVisible = ref(false);
+const logoutDialog = () => {
+  dialogVisible.value = true;
 };
+const confirmedLogout = () => {
+  user.toggleAuth();
+  router.replace("/auth");
+  closeDialog();
+};
+const closeDialog = () => (dialogVisible.value = false);
+
+const greenActive = computed(() => {
+  if (user.theme === "green") return true;
+  else return false;
+});
+
+const color1 = computed(() => {
+  if (user.theme === "green") return "#7a9874";
+  else return " #ccab71";
+});
+const colorLogo = computed(() => {
+  if (user.theme === "green") return "#f8fdf7";
+  else return "#333";
+});
+defineExpose({
+  user,
+  logoutDialog,
+  confirmedLogout,
+  closeDialog,
+  color1,
+  greenActive,
+  colorLogo,
+});
 </script>
 <style scoped>
 .main-header {

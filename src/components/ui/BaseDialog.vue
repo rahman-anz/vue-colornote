@@ -1,8 +1,8 @@
 <template>
   <teleport to="body">
     <div class="backdrop" @click="tryClose" v-if="show"></div>
-    <transition name="dialog" :class="color2">
-      <dialog open v-if="show">
+    <transition name="dialog">
+      <dialog open v-if="show" :class="color2">
         <header v-if="!fixed" :class="color1">
           <h2><slot name="header">Alert</slot></h2>
         </header>
@@ -18,45 +18,42 @@
     </transition>
   </teleport>
 </template>
-<script>
+
+<script setup>
 import { useUserStore } from "@/store/user";
-import { computed } from "vue";
+import { defineExpose, defineProps, defineEmits, computed } from "vue";
 import BaseButton from "./BaseButton.vue";
-export default {
-  emits: ["close"],
-  components: { BaseButton },
-  props: {
-    fixed: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    show: {
-      type: Boolean,
-      required: true,
-    },
-  },
-  setup(props, context) {
-    const tryClose = () => {
-      if (props.fixed) {
-        return;
-      }
-      context.emit("close");
-    };
-    const user = useUserStore();
-    const color1 = computed(() => {
-      if (user.theme === "green") return "green-header";
-      else return "brown-header";
-    });
 
-    const color2 = computed(() => {
-      if (user.theme === "green") return "green-dialog";
-      else return "brown-dialog ";
-    });
-
-    return { tryClose, color1, color2 };
+const emit = defineEmits(["close"]);
+const props = defineProps({
+  fixed: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
+  show: {
+    type: Boolean,
+    required: true,
+  },
+});
+const tryClose = () => {
+  if (props.fixed) {
+    return;
+  }
+  emit("close");
 };
+const user = useUserStore();
+const color1 = computed(() => {
+  if (user.theme === "green") return "green-header";
+  else return "brown-header";
+});
+
+const color2 = computed(() => {
+  if (user.theme === "green") return "green-dialog";
+  else return "brown-dialog ";
+});
+
+defineExpose({ tryClose, color1, color2 });
 </script>
 <style scoped>
 .backdrop {
