@@ -53,7 +53,7 @@ const borderColor = computed(() => {
   if (user.theme === "green") return "#b2eaa9";
   else return " #ffbb46";
 });
-defineExpose({ togglePin, getPinStatus, mainColor, activeColor, borderColor });
+defineExpose({ togglePin });
 </script>
 <style scoped>
 li {
@@ -107,7 +107,7 @@ li {
 .icon {
   width: 1.8rem;
 }
-@media (max-width: 25em) {
+@media (max-width: 32em) {
   .note {
     height: 7.6rem;
   }

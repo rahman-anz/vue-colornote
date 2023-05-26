@@ -69,7 +69,6 @@ const confirmDeletion = () => {
 };
 
 defineExpose({
-  selectedNote,
   editNote,
   openDialog,
   closeDialog,
@@ -104,7 +103,7 @@ section p {
   white-space: pre-wrap;
   line-height: 3.2rem;
 }
-@media (max-width: 25em) {
+@media (max-width: 32em) {
   .icon-position1 {
     right: 8rem;
   }

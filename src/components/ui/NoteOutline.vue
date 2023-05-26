@@ -3,7 +3,7 @@
 </template>
 <script setup>
 import { useUserStore } from "@/store/user";
-import { defineExpose, computed } from "vue";
+import { computed } from "vue";
 
 const user = useUserStore();
 const mainColor = computed(() => {
@@ -14,7 +14,6 @@ const secColor = computed(() => {
   if (user.theme === "green") return "#a2cc9c";
   else return "#f6ba52";
 });
-defineExpose({ mainColor, secColor });
 </script>
 
 <style scoped>
@@ -31,7 +30,7 @@ section {
   /* background-size: contain; */
   overflow: auto;
 }
-@media (max-width: 25em) {
+@media (max-width: 32em) {
   section {
     padding: 1rem 0.2rem;
   }

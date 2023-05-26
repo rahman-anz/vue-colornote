@@ -7,14 +7,13 @@
 <script setup>
 import { PencilSquareIcon } from "@heroicons/vue/24/outline";
 import { useUserStore } from "@/store/user.js";
-import { defineExpose, computed } from "vue";
+import { computed } from "vue";
 
 const user = useUserStore();
 const color1 = computed(() => {
   if (user.theme === "green") return "#a0d398";
   else return " #fbc669";
 });
-defineExpose({ color1 });
 </script>
 <style scoped>
 .create-note {
@@ -37,14 +36,15 @@ defineExpose({ color1 });
 
 .icon-pen {
   margin-left: 2rem;
+
   width: 4.3rem;
 }
 .create-note-text {
   font-size: 2rem;
 }
-@media (max-width: 25em) {
+@media (max-width: 32em) {
   .icon-pen {
-    width: 3.5rem;
+    width: 40%;
   }
 }
 </style>

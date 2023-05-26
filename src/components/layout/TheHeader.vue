@@ -70,9 +70,6 @@ defineExpose({
   logoutDialog,
   confirmedLogout,
   closeDialog,
-  color1,
-  greenActive,
-  colorLogo,
 });
 </script>
 <style scoped>
@@ -82,7 +79,6 @@ defineExpose({
   display: flex;
   align-items: center;
   grid-column: 1/-1;
-  min-height: 2rem;
 }
 .logo {
   font-family: "Lobster";
@@ -105,12 +101,14 @@ defineExpose({
 }
 .brown {
   background-color: burlywood;
+  transition: all 0.4s;
 }
 .green {
+  transition: all 0.4s;
   background-color: rgb(95, 198, 95);
 }
 .active {
-  outline: #444 7px solid;
+  outline: #444 8px solid;
 }
 .actions {
   margin-left: auto;

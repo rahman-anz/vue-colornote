@@ -1,28 +1,32 @@
 <template>
-  <form @submit.prevent="submitNote">
-    <h2>Start Creating Notes</h2>
-    <div class="form-control">
-      <input placeholder="Title" class="title" type="text" v-model="title" />
-    </div>
-    <div class="form-control">
-      <textarea
-        placeholder="Description"
-        class="desc"
-        v-model="desc"
-      ></textarea>
-    </div>
-    <p v-if="invalidForm" class="errorMsg">Please enter some input 😐</p>
-    <base-button mode="curved">Save</base-button>
-  </form>
-  <base-dialog :show="dialogVisible" @close="closeDialog"
-    ><template #default
-      >Are you sure about making the changes to the existing note ?</template
+  <div class="container">
+    <form @submit.prevent="submitNote">
+      <h2>Start Creating Notes</h2>
+      <div class="form-control">
+        <input placeholder="Title" class="title" type="text" v-model="title" />
+      </div>
+      <div class="form-control">
+        <textarea
+          placeholder="Description"
+          class="desc"
+          v-model="desc"
+        ></textarea>
+      </div>
+      <p v-if="invalidForm" class="errorMsg">Please enter some input 😐</p>
+      <base-button mode="curved">Save</base-button>
+    </form>
+    <base-dialog :show="dialogVisible" @close="closeDialog"
+      ><template #default
+        >Are you sure about making the changes to the existing note ?</template
+      >
+      <template #actions
+        ><base-button mode="flat" @click="confirmEdits">Yes</base-button
+        ><base-button mode="flat" @click="closeDialog"
+          >No</base-button
+        ></template
+      ></base-dialog
     >
-    <template #actions
-      ><base-button mode="flat" @click="confirmEdits">Yes</base-button
-      ><base-button mode="flat" @click="closeDialog">No</base-button></template
-    ></base-dialog
-  >
+  </div>
 </template>
 <script setup>
 import { defineExpose, ref, computed } from "vue";
@@ -93,12 +97,12 @@ defineExpose({
   submitNote,
   editNote,
   confirmEdits,
-  mainColor,
-  inpColor,
-  focusColor,
 });
 </script>
 <style scoped>
+.container {
+  overflow-y: scroll;
+}
 form {
   position: relative;
   background-color: v-bind(mainColor);
@@ -107,6 +111,7 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   gap: 1.2rem;
 }
 h2 {
@@ -143,7 +148,7 @@ h2 {
   color: red;
   margin-bottom: 1rem;
 }
-@media (max-width: 25em) {
+@media (max-width: 32em) {
   form {
     justify-content: start;
   }
@@ -151,7 +156,7 @@ h2 {
     height: 25vh;
   }
   .errorMsg {
-    bottom: 28%;
+    bottom: 20%;
   }
 }
 </style>

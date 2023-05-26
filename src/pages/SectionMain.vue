@@ -41,7 +41,7 @@ const mainColor = computed(() => {
   if (user.theme === "green") return "#e9ffe5";
   else return "#ffedcc";
 });
-defineExpose({ store, sortedNotes, mainColor });
+defineExpose({ store });
 </script>
 
 <style scoped>
@@ -86,7 +86,7 @@ section {
 .note-move {
   transition: transform 0.6s ease;
 }
-@media (max-width: 25em) {
+@media (max-width: 32em) {
   section {
     padding: 0rem 0.3rem;
   }

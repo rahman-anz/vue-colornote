@@ -38,11 +38,11 @@ body {
   width: 92vw;
   height: 94vh;
   display: grid;
-  grid-template-rows: 10vh 1fr;
+  grid-template-rows: 6.5rem 1fr;
   grid-template-columns: 30vw 1fr;
   overflow: hidden;
 }
-@media (max-width: 25em) {
+@media (max-width: 32em) {
   html {
     font-size: 55%;
   }

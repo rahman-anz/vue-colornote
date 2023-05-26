@@ -43,7 +43,7 @@ const inpColor = computed(() => {
   if (user.theme === "green") return "#5ea751";
   else return "#e5a537";
 });
-defineExpose({ login, mainColor, inpColor });
+defineExpose({ login });
 </script>
 <style scoped>
 section {

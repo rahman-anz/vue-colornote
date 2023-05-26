@@ -5,7 +5,7 @@
 </template>
 <script setup>
 import { useUserStore } from "@/store/user.js";
-import { defineProps, defineExpose, computed } from "vue";
+import { defineProps,computed } from "vue";
 
 defineProps({
   mode: {
@@ -28,7 +28,6 @@ const colorFlat = computed(() => {
   else return " #ffd791";
 });
 
-defineExpose({ color, colorHover, colorFlat });
 </script>
 <style scoped>
 button {

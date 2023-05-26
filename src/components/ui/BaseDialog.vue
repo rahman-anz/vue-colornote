@@ -53,7 +53,7 @@ const color2 = computed(() => {
   else return "brown-dialog ";
 });
 
-defineExpose({ tryClose, color1, color2 });
+defineExpose({ tryClose });
 </script>
 <style scoped>
 .backdrop {
@@ -133,10 +133,13 @@ menu {
   justify-content: flex-end;
   gap: 1.5rem;
 }
-@media (max-width: 25em) {
+@media (max-width: 32em) {
   dialog {
     top: 25vh;
     left: 20%;
+  }
+  section {
+    margin: 2rem 2rem;
   }
   section p {
     font-size: 1.4rem;
