@@ -104,4 +104,16 @@ section p {
   white-space: pre-wrap;
   line-height: 3.2rem;
 }
+@media (max-width: 25em) {
+  .icon-position1 {
+    right: 8rem;
+  }
+  .icon-position2 {
+    right: 2rem;
+  }
+
+  section p {
+    font-size: 1.7rem;
+  }
+}
 </style>

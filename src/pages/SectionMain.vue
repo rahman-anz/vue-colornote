@@ -86,4 +86,9 @@ section {
 .note-move {
   transition: transform 0.6s ease;
 }
+@media (max-width: 25em) {
+  section {
+    padding: 0rem 0.3rem;
+  }
+}
 </style>

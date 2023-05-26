@@ -29,7 +29,6 @@ const colorFlat = computed(() => {
 });
 
 defineExpose({ color, colorHover, colorFlat });
-
 </script>
 <style scoped>
 button {
@@ -37,6 +36,7 @@ button {
   border: none;
   background-color: v-bind(color);
   font-size: 1.5rem;
+  transition: all 0.4s;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -58,6 +58,7 @@ button:active {
 .flat {
   border-radius: 10px;
   border: v-bind(color) 2px solid;
+  transition: all 0.4s;
   background-color: v-bind(colorFlat);
 }
 

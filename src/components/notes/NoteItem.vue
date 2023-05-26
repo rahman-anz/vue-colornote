@@ -60,7 +60,7 @@ li {
   position: relative;
 }
 .note {
-  min-height: 7.5rem;
+  height: 7.5rem;
   background-color: v-bind(mainColor);
   text-decoration: none;
   color: #333;
@@ -101,9 +101,24 @@ li {
 
 .note-description {
   font-size: 1.3rem;
+  line-height: 1.5;
 }
 
 .icon {
   width: 1.8rem;
+}
+@media (max-width: 25em) {
+  .note {
+    height: 7.6rem;
+  }
+  .note-title {
+    font-size: 1.4rem;
+  }
+  .note-description {
+    font-size: 1rem;
+  }
+  .icon {
+    width: 1.5rem;
+  }
 }
 </style>

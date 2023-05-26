@@ -31,4 +31,9 @@ section {
   /* background-size: contain; */
   overflow: auto;
 }
+@media (max-width: 25em) {
+  section {
+    padding: 1rem 0.2rem;
+  }
+}
 </style>

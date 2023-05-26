@@ -143,4 +143,15 @@ h2 {
   color: red;
   margin-bottom: 1rem;
 }
+@media (max-width: 25em) {
+  form {
+    justify-content: start;
+  }
+  .desc {
+    height: 25vh;
+  }
+  .errorMsg {
+    bottom: 28%;
+  }
+}
 </style>

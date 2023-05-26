@@ -42,4 +42,9 @@ defineExpose({ color1 });
 .create-note-text {
   font-size: 2rem;
 }
+@media (max-width: 25em) {
+  .icon-pen {
+    width: 3.5rem;
+  }
+}
 </style>

@@ -70,7 +70,7 @@ dialog {
   position: fixed;
   top: 30vh;
   left: 30%;
-  min-width: 40%;
+  max-width: 60%;
   z-index: 20;
   /* border-radius: 12px; */
   border-radius: 2rem;
@@ -132,5 +132,16 @@ menu {
   display: flex;
   justify-content: flex-end;
   gap: 1.5rem;
+}
+@media (max-width: 25em) {
+  dialog {
+    top: 25vh;
+    left: 20%;
+  }
+  section p {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    text-align: start;
+  }
 }
 </style>
