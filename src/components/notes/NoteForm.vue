@@ -101,11 +101,11 @@ defineExpose({
 </script>
 <style scoped>
 .container {
-  overflow-y: scroll;
+  overflow-y: auto;
+  background-color: v-bind(mainColor);
 }
 form {
   position: relative;
-  background-color: v-bind(mainColor);
   padding: 2rem 2rem;
   display: flex;
   flex-direction: column;
